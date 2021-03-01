@@ -1,5 +1,5 @@
 import classes from "./App.module.css";
-import NewsAggregator from "./Container/newsAggregator";
+import NewsAggregator from "./Container/NewsAggregator";
 
 function App() {
   return (

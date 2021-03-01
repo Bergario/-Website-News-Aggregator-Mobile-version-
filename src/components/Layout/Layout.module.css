@@ -1,0 +1,21 @@
+@media(max-width:480px){
+
+    .Layout{
+        width: 100%;
+        height: 50px;
+        background-color: blanchedalmond;
+        position: fixed;
+        border-bottom: 3px solid rgb(97, 95, 95);
+    }
+
+    .Logo {
+        font-size: 30px;
+        padding: 0;
+        margin: 0px auto;
+    }
+    .Logo span{
+        font-size: 15px;
+        padding: 0;
+        margin: 0px auto;
+    }
+}

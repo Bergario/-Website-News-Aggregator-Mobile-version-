@@ -1,14 +1,16 @@
 import React from "react";
-import NewsCard from "./Card/NewsCard";
 
-export default function NewsCards() {
+import NewsCard from "./Card/NewsCard";
+import classes from "./NewsCards.module.css";
+
+export default function NewsCards(props) {
+  const { newsData } = props;
   return (
-    <div>
-      <NewsCard />
-      <NewsCard />
-      <NewsCard />
-      <NewsCard />
-      <NewsCard />
+    <div className={classes.NewsCards}>
+      {newsData &&
+        newsData.articles.map((result, i) => {
+          return <NewsCard key={i} title={result.title} />;
+        })}
     </div>
   );
 }

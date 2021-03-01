@@ -2,23 +2,27 @@
     height: 300px;
     width: 30%;
     background-color: #eee;
-    display: inline-block;
     margin-right: 12px;
     box-shadow: 1px 1px 1px #ccc;
-    float: left;
      margin-top:15px;
 }
 
 @media(max-width:480px){
     .NewsCard{
-        height: 200px;
-        float: left;
-        width: 30%;
-        background-color: #eee;
-        display: inline-block;
-        margin-right: 8px;
-        margin-top: 12px;
+        margin: 20px auto;
+        height: 220px;
+        width: 90%;
+        background-color: rgb(255, 255, 255);
         box-shadow: 1px 3px 5px #ccc;
+        box-sizing: border-box;
+    }
+    
+    .ImgCard{
+        box-sizing: border-box;
+        margin: 5px auto;
+        height: 150px;
+        width: 100%;
+        background-color: #eee;
     }
 
 }

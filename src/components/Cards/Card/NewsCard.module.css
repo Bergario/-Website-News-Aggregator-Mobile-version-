@@ -1,0 +1,24 @@
+.NewsCard{
+    height: 300px;
+    width: 30%;
+    background-color: #eee;
+    display: inline-block;
+    margin-right: 12px;
+    box-shadow: 1px 1px 1px #ccc;
+    float: left;
+     margin-top:15px;
+}
+
+@media(max-width:480px){
+    .NewsCard{
+        height: 200px;
+        float: left;
+        width: 30%;
+        background-color: #eee;
+        display: inline-block;
+        margin-right: 8px;
+        margin-top: 12px;
+        box-shadow: 1px 3px 5px #ccc;
+    }
+
+}

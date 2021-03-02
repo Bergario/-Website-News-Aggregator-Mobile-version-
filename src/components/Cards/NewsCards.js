@@ -14,6 +14,7 @@ export default function NewsCards(props) {
               key={i}
               title={result.title}
               imgLink={result.urlToImage}
+              newsTimes={result.publishedAt}
             />
           );
         })}

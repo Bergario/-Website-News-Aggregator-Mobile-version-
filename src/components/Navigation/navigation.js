@@ -4,10 +4,12 @@ import classes from "./navigation.module.css";
 
 const navigation = () => {
   return (
-    <div className={classes.Navigation}>
-      <h4>Home</h4>
-      <h4>About Us</h4>
-      <h4>Login</h4>
+    <div>
+      <li className={classes.Navigation} active="true">
+        #SPORT
+      </li>
+      <li className={classes.Navigation}>#SCIENCE</li>
+      <li className={classes.Navigation}>#TECHNOLOGY</li>
     </div>
   );
 };

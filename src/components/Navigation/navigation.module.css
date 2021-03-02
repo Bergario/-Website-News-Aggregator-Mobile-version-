@@ -4,9 +4,18 @@
     }
 
     @media(max-width: 480px) {
-        .Navigation h4 {
+        .Navigation {
             padding: 0 5px;
-            margin-top: 80px;
+            margin-top: 90px;
+            display: inline-block;
+            height: 25px;
+            font-weight: 300;
+        }
+        
+        .Navigation:hover, .Navigation:active{
+            background-color: #44749d;
+            color: white;
+            border-radius: 5px;
         }
 
       

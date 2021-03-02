@@ -12,18 +12,14 @@ const NewsAggregator = () => {
     setIsLoading(true);
     axios
       .get(
-        "http://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=f6352cf470204beca0112cd570c29114"
+        "https://newsapi.org/v2/top-headlines?country=id&category=entertainment&apiKey=f6352cf470204beca0112cd570c29114"
       )
       .then((response) => {
         setNews(response.data);
         setIsLoading(false);
-        console.log(response.data);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
   }, []);
-  console.log(isLoading);
   const LayoutComponent = isLoading ? (
     <Spinner />
   ) : (

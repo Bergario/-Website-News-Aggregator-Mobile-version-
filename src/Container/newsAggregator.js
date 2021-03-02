@@ -12,11 +12,15 @@ const NewsAggregator = () => {
     setIsLoading(true);
     axios
       .get(
-        "http://newsapi.org/v2/everything?q=tesla&from=2021-02-01&sortBy=publishedAt&apiKey=f6352cf470204beca0112cd570c29114"
+        "http://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=f6352cf470204beca0112cd570c29114"
       )
       .then((response) => {
         setNews(response.data);
         setIsLoading(false);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }, []);
   console.log(isLoading);

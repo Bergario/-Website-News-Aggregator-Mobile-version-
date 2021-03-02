@@ -7,22 +7,33 @@
      margin-top:15px;
 }
 
+
 @media(max-width:480px){
     .NewsCard{
         margin: 20px auto;
-        height: 220px;
+        height: 300px;
         width: 90%;
         background-color: rgb(255, 255, 255);
         box-shadow: 1px 3px 5px #ccc;
         box-sizing: border-box;
+        text-align: left;
+        padding: 10px;
+    }
+    .NewsCard span{
+        font-weight: 700;
     }
     
     .ImgCard{
         box-sizing: border-box;
         margin: 5px auto;
-        height: 150px;
+        height: 200px;
         width: 100%;
         background-color: #eee;
+    }
+
+    .ImgCard img{
+        height: 200px;
+        width: 100%;
     }
 
 }

@@ -9,7 +9,13 @@ export default function NewsCards(props) {
     <div className={classes.NewsCards}>
       {newsData &&
         newsData.articles.map((result, i) => {
-          return <NewsCard key={i} title={result.title} />;
+          return (
+            <NewsCard
+              key={i}
+              title={result.title}
+              imgLink={result.urlToImage}
+            />
+          );
         })}
     </div>
   );

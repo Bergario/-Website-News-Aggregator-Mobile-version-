@@ -5,6 +5,7 @@
         height: 80px;
         background-image: linear-gradient(#c6d4e1, white);
         position: fixed;
+        z-index: 10;
         /* box-shadow: 1px 5px 10px #e7e8e9; */
     }
 

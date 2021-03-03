@@ -17,7 +17,7 @@ const NewsAggregator = () => {
     setIsLoading(true);
     axios
       .get(
-        "https://newsapi.org/v2/top-headlines?country=id&apiKey=f6352cf470204beca0112cd570c29114"
+        "https://newsapi.org/v2/top-headlines?country=id&category=sports&apiKey=f6352cf470204beca0112cd570c29114"
       )
       .then((response) => {
         setNews(response.data);

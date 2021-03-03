@@ -1,49 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-import classes from "./SlideShow.module.css";
+import axios from "axios";
+import ImageSlide from "./ImageSlide";
 
 const Slideshow = (props) => {
-  let newsResult = null;
-  newsResult = props.newsData.articles;
-  console.log(newsResult);
+  // let newsResult = null;
+  // newsResult = props.newsData.articles;
+  // console.log(newsResult);
 
-  return (
+  const [newsSlide, setNewsSlide] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get(
+        "https://newsapi.org/v2/top-headlines?country=id&category=technology&apiKey=f6352cf470204beca0112cd570c29114"
+      )
+      .then((response) => {
+        setNewsSlide(response.data);
+      });
+  }, []);
+
+  const slidePost =
+    newsSlide &&
+    newsSlide.articles.map((result) => (
+      <ImageSlide imgLink={result.urlToImage} />
+    ));
+
+  const Posts = newsSlide ? (
     <div className="slide-container">
-      <Slide>
-        <div className={classes.Each_slide}>
-          <div
-            style={{
-              backgroundImage: `url(${newsResult && newsResult[0].urlToImage})`,
-              height: "300px",
-            }}
-          >
-            <span>Slide 1</span>
-          </div>
-        </div>
-        <div className={classes.Each_slide}>
-          <div
-            style={{
-              backgroundImage: `url(${newsResult && newsResult[1].urlToImage})`,
-              height: "300px",
-            }}
-          >
-            <span>Slide 2</span>
-          </div>
-        </div>
-        <div className={classes.Each_slide}>
-          <div
-            style={{
-              backgroundImage: `url(${newsResult && newsResult[2].urlToImage})`,
-              height: "300px",
-            }}
-          >
-            <span>Slide 3</span>
-          </div>
-        </div>
-      </Slide>
+      <Slide>{slidePost ? slidePost : <ImageSlide />}</Slide>
     </div>
+  ) : (
+    <></>
   );
+
+  return Posts;
 };
 
 export default Slideshow;

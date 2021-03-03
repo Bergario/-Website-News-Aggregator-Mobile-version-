@@ -1,10 +1,9 @@
-@media(min-width: 480px){
+@media(max-width: 480px){
     .Each_slide>div {
         display: flex;
         align-items: center;
         justify-content: center;
-        background-size: cover;
-        height: 350px;
+        background-size: 100% 250px;
     }
 
     .Each_slide span {

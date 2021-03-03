@@ -10,7 +10,7 @@ export default function NewsCard(props) {
       </div>
       <span>{props.title}</span>
       <hr />
-      <p>{actions.TimesCounter(props.newsTimes)}h | John Chris</p>
+      <p>{actions.TimesCounter(props.newsTimes)} hours ago | John Chris</p>
       <a href="true">Detik.com</a>
     </div>
   );

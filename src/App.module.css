@@ -6,9 +6,7 @@
 
 
 @media(max-width: 480px) {
-  .body{
-    display: flex;
-  }
+
   .App {
     text-align: center;
   }

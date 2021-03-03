@@ -12,7 +12,7 @@ const NewsAggregator = () => {
     setIsLoading(true);
     axios
       .get(
-        "https://newsapi.org/v2/top-headlines?country=id&category=entertainment&apiKey=f6352cf470204beca0112cd570c29114"
+        "https://newsapi.org/v2/top-headlines?country=id&category=general&apiKey=f6352cf470204beca0112cd570c29114"
       )
       .then((response) => {
         setNews(response.data);

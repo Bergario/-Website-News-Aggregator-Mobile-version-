@@ -2,11 +2,13 @@ import React from "react";
 import classes from "./NewsCard.module.css";
 import * as actions from "../../../Shared/Utility";
 
-export default function NewsCard(props) {
+const NewsCard = React.memo((props) => {
+  console.log("CARD RENDERED");
+
   return (
     <div className={classes.NewsCard}>
       <div className={classes.ImgCard}>
-        <img src={props.imgLink} alt="" />
+        <img src={props.imgLink} alt="true" />
       </div>
       <span>{props.title}</span>
       <hr />
@@ -14,4 +16,6 @@ export default function NewsCard(props) {
       <a href="true">Detik.com</a>
     </div>
   );
-}
+});
+
+export default NewsCard;

@@ -1,0 +1,17 @@
+@media(min-width: 480px){
+    .Each_slide>div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-size: cover;
+        height: 350px;
+    }
+
+    .Each_slide span {
+        padding: 20px;
+        font-size: 20px;
+        background: #efefef;
+        text-align: center;
+    }
+}
+

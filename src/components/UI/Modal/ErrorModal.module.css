@@ -1,0 +1,42 @@
+@media(max-width: 480px){
+
+    .Error_modal {
+        position: fixed;
+        top: 30vh;
+        left: calc(50% - 10rem);
+        width: 20rem;
+        background: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        z-index: 100;
+        border-radius: 7px;
+    }
+
+    .Error_modal h3 {
+        margin: 0;
+        padding: 1rem;
+        background: #44749d;
+        color: white;
+        border-radius: 7px 7px 0 0;
+    }
+
+    .Error_modal p {
+        padding: 1rem;
+    }
+
+    .Error_modal__actions {
+        display: flex;
+        justify-content: flex-end;
+        padding: 0 0.5rem;
+        padding-bottom: 0.5rem
+    }
+
+    .Backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.75);
+        z-index: 50;
+    }
+}

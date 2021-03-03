@@ -16,8 +16,13 @@
             background-color: #44749d;
             color: white;
             border-radius: 5px;
+            margin-top: 80px;
+            
         }
 
-      
+        .Navigation{
+            overflow: auto;
+            white-space: nowrap;
+        }
 
     }

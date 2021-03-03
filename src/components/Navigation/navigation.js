@@ -2,7 +2,9 @@ import React from "react";
 
 import classes from "./navigation.module.css";
 
-const navigation = () => {
+const navigation = React.memo(() => {
+  console.log("NAV RENDERED");
+
   return (
     <div>
       <li className={classes.Navigation} active="true">
@@ -12,6 +14,6 @@ const navigation = () => {
       <li className={classes.Navigation}>#TECHNOLOGY</li>
     </div>
   );
-};
+});
 
 export default navigation;

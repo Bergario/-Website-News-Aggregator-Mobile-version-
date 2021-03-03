@@ -7,8 +7,12 @@
         .Navigation h4 {
             padding: 0 5px;
             margin-top: 80px;
+            
         }
 
-      
+        .Navigation{
+            overflow: auto;
+            white-space: nowrap;
+        }
 
     }

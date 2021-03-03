@@ -3,7 +3,9 @@ import React from "react";
 import NewsCard from "./Card/NewsCard";
 import classes from "./NewsCards.module.css";
 
-export default function NewsCards(props) {
+const NewsCards = React.memo((props) => {
+  console.log("CARDS");
+
   const { newsData } = props;
   return (
     <div className={classes.NewsCards}>
@@ -19,4 +21,6 @@ export default function NewsCards(props) {
         })}
     </div>
   );
-}
+});
+
+export default NewsCards;

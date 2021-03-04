@@ -4,7 +4,7 @@ import "react-slideshow-image/dist/styles.css";
 import axios from "axios";
 import ImageSlide from "./ImageSlide";
 
-const Slideshow = (props) => {
+const Slideshow = () => {
   // let newsResult = null;
   // newsResult = props.newsData.articles;
   // console.log(newsResult);
@@ -18,13 +18,17 @@ const Slideshow = (props) => {
       )
       .then((response) => {
         setNewsSlide(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }, []);
 
   const slidePost =
     newsSlide &&
-    newsSlide.articles.map((result) => (
-      <ImageSlide imgLink={result.urlToImage} />
+    newsSlide.articles.map((result, i) => (
+      <ImageSlide title={result.title} imgLink={result.urlToImage} key={i} />
     ));
 
   const Posts = newsSlide ? (

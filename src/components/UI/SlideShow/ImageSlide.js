@@ -8,7 +8,12 @@ const ImageSlide = (props) => {
         style={{
           backgroundImage: `url(${props.imgLink})`,
           height: "250px",
-        }}></div>
+        }}
+      ></div>
+      <div className={classes.NewsTitle}>
+        <span>HEALT</span>
+        <p>{props.title}</p>
+      </div>
     </div>
   );
 };

@@ -6,12 +6,14 @@ const navigation = React.memo(() => {
   console.log("NAV RENDERED");
 
   return (
-    <div>
-      <li className={classes.Navigation} active="true">
-        #SPORT
-      </li>
-      <li className={classes.Navigation}>#SCIENCE</li>
-      <li className={classes.Navigation}>#TECHNOLOGY</li>
+    <div className={classes.Navigation}>
+      <li>SPORT</li>
+      <li>SCIENCE</li>
+      <li>TECHNOLOGY</li>
+      <li>BUSINESS</li>
+      <li>GENERAL</li>
+      <li>HEALTH</li>
+      <li>ENTERTAINMENT</li>
     </div>
   );
 });

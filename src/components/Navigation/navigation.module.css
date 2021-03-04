@@ -4,17 +4,27 @@
     }
 
     @media(max-width: 480px) {
-        .Navigation {
-            padding: 0 5px;
+        .Navigation li{
+            padding: 0 10px;
             margin-top: 90px;
             display: inline-block;
             height: 25px;
-            font-weight: 300;
+            font-weight: 500;
+            border: 1px solid #d0cccc;
+            margin-right: 10px;
+            margin-left: 5px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            background-color: #ffffff73;
+            font-size: 12px;
+            line-height: 200%;
+            color: #a9a7a7;
         }
         
-        .Navigation:hover, .Navigation:active{
-            background-color: #44749d;
-            color: white;
+       .Navigation li:active,
+       Navigation li:hover {
+            background-color: #c8232c;
+            color: rgb(231, 231, 231);
             border-radius: 5px;
             margin-top: 80px;
             
@@ -23,6 +33,7 @@
         .Navigation{
             overflow: auto;
             white-space: nowrap;
+            background-image: linear-gradient(#dce1e9, #e5e5ec8a)
         }
 
     }

@@ -12,7 +12,7 @@ const NewsCard = React.memo((props) => {
       </div>
       <span>{props.title}</span>
       <hr />
-      <p>{actions.TimesCounter(props.newsTimes)} hours ago | John Chris</p>
+      <p>{actions.TimesCounter(props.newsTimes)} | John Chris</p>
       <a href="true">Detik.com</a>
     </div>
   );

@@ -9,28 +9,28 @@
 
     .NewsTitle{
         width: 390px;
-        height: 100px;
+        max-height: 200px;
         background-color: #d8d8d899;
         /* float: right; */
         margin-top: -50px;
         text-align: left;
     }
 
-    .NewsTitle span{
+    .NewsTitle h5{
         padding: 5px 10px;
         font-size: 12px;
         border-bottom: 1px solid #b0001c;
-        margin: 20px;
-        font-weight: 700;
+        margin: 22px;
+        display: inline-block;
+        color: #b0001c;
+        margin-bottom: 0;
     }
 
       .NewsTitle p {
           padding: 10px;
           font-size: 16px;
-          margin: 20px;
-          padding-top: 0;
-          font-family: 'Poppins',
-          sans-serif;
+          margin: 5px 20px;
+          color: #565353;
       }
 }
 

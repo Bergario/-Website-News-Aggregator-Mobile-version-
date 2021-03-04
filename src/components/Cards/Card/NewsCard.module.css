@@ -19,8 +19,9 @@
         padding: 10px;
     }
     .NewsCard span{
-        font-weight: 700;
+        font-weight: 400;
         font-size: 14px;
+        color: #6f6c6c
     }
 
     .NewsCard p{

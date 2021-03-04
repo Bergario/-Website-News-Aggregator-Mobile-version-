@@ -1,21 +1,20 @@
 import React from "react";
 import classes from "./ImageSlide.module.css";
 
-const ImageSlide = (props) => {
+const ImageSlide = React.memo((props) => {
   return (
     <div className={classes.Each_slide}>
       <div
         style={{
           backgroundImage: `url(${props.imgLink})`,
           height: "250px",
-        }}
-      ></div>
+        }}></div>
       <div className={classes.NewsTitle}>
-        <span>HEALT</span>
+        <h5>TECH</h5>
         <p>{props.title}</p>
       </div>
     </div>
   );
-};
+});
 
 export default ImageSlide;

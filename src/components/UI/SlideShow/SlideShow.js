@@ -32,8 +32,11 @@ const Slideshow = () => {
     ));
 
   const Posts = newsSlide ? (
-    <div className="slide-container">
-      <Slide>{slidePost ? slidePost : <ImageSlide />}</Slide>
+    <div>
+      <h3>LATEST TECH</h3>
+      <div className="slide-container">
+        <Slide>{slidePost ? slidePost : <ImageSlide />}</Slide>
+      </div>
     </div>
   ) : (
     <></>

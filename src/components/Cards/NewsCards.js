@@ -9,6 +9,7 @@ const NewsCards = React.memo((props) => {
   const { newsData } = props;
   return (
     <div className={classes.NewsCards}>
+      <h3>HEADLINES</h3>
       {newsData &&
         newsData.articles.map((result, i) => {
           return (
@@ -17,6 +18,7 @@ const NewsCards = React.memo((props) => {
               title={result.title}
               imgLink={result.urlToImage}
               newsTimes={result.publishedAt}
+              author={result.author}
             />
           );
         })}

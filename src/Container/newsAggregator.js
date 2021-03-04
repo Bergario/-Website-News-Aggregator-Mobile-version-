@@ -11,13 +11,37 @@ const NewsAggregator = () => {
   const [news, setNews] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [category] = useState([
+    "business",
+    "entertainment",
+    "general",
+    "health",
+    "science",
+    "sports",
+    "technology",
+  ]);
   useEffect(() => {
     console.log("COMPONENT DID MOUNT");
 
     setIsLoading(true);
     axios
       .get(
-        "https://newsapi.org/v2/top-headlines?country=us&category=entertainment&apiKey=f6352cf470204beca0112cd570c29114"
+        "https://newsapi.org/v2/top-headlines?country=us&apiKey=f6352cf470204beca0112cd570c29114"
+      )
+      .then((response) => {
+        setNews(response.data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  }, []);
+
+  const selectCategoryHandler = useCallback((category) => {
+    setIsLoading(true);
+    axios
+      .get(
+        `https://newsapi.org/v2/top-headlines?country=id&category=${category}&apiKey=f6352cf470204beca0112cd570c29114`
       )
       .then((response) => {
         setNews(response.data);
@@ -41,7 +65,10 @@ const NewsAggregator = () => {
     <div>
       {error && <ErrorModal onClose={errorModalClose}>{error}</ErrorModal>}
       <Layout />
-      <Navigation />
+      <Navigation
+        category={category}
+        onSelectCategory={selectCategoryHandler}
+      />
       <Slideshow newsData={news} />
       {LayoutComponent}
     </div>

@@ -19,6 +19,7 @@ const NewsCards = React.memo((props) => {
               imgLink={result.urlToImage}
               newsTimes={result.publishedAt}
               author={result.author}
+              sources={result.source.name}
             />
           );
         })}

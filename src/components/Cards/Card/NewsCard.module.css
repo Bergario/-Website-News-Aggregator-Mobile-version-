@@ -24,10 +24,23 @@
         color: #6f6c6c
     }
 
+       hr{
+          color: #b0001c;
+          background-color: #b0001c;
+      }
+
     .NewsCard p{
         padding: 0;
         font-size: 10px;
+        color: rgb(160, 160, 160);
     }
+
+     .NewsCard p span{
+         padding: 0;
+         font-size: 12px;
+         color: rgb(160, 160, 160);
+         font-weight: 600;
+     }
     
     .ImgCard{
         box-sizing: border-box;
@@ -41,5 +54,23 @@
         height: 200px;
         width: 100%;
     }
+
+   .Link{
+       color: #b0001c;
+       text-align: right;
+       display: block;    
+       font-size: 12px;
+   }
+   .Link span{
+       color: #6f6c6c;
+       text-align: right;
+       display: block;    
+       font-size: 10px;
+   }
+
+  .Link svg{
+      height: 0.8em;
+      margin-right: 5px;
+  }
 
 }

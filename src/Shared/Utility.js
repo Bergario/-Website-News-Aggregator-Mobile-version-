@@ -7,7 +7,7 @@ export const TimesCounter = (newsDate) => {
 
   if (time < 3600000) {
     y = `${Math.floor(time / minutes)} minutes ago`;
-  } else if (time < 864000000) {
+  } else if (time < 86400000) {
     y = `${Math.floor(time / hours)} hours ago`;
   } else if (time < 31536000000) {
     y = `${Math.floor(time / days)} days ago`;

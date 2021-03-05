@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./NewsCard.module.css";
 import * as actions from "../../../Shared/Utility";
+import { FaGlobeAmericas } from "react-icons/fa";
 
 const NewsCard = React.memo((props) => {
   console.log("CARD RENDERED");
@@ -13,9 +14,15 @@ const NewsCard = React.memo((props) => {
       <span>{props.title}</span>
       <hr />
       <p>
-        {actions.TimesCounter(props.newsTimes)} | {props.author}
+        {actions.TimesCounter(props.newsTimes)} | <span>{props.author}</span>
       </p>
-      <a href="true">Detik.com</a>
+      <li className={classes.Link}>
+        <span>read more {">"}</span>
+      </li>
+      <li className={classes.Link}>
+        <FaGlobeAmericas />
+        {props.sources}
+      </li>
     </div>
   );
 });

@@ -11,6 +11,7 @@ const NewsAggregator = () => {
   const [news, setNews] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [scroll, setScroll] = useState("");
   const [category] = useState([
     "business",
     "entertainment",
@@ -26,7 +27,7 @@ const NewsAggregator = () => {
     setIsLoading(true);
     axios
       .get(
-        "https://newsapi.org/v2/top-headlines?country=us&apiKey=f6352cf470204beca0112cd570c29114"
+        "http://newsapi.org/v2/everything?q=apple&from=2021-03-03&to=2021-03-03&sortBy=popularity&apiKey=f6352cf470204beca0112cd570c29114"
       )
       .then((response) => {
         setNews(response.data);
@@ -60,6 +61,19 @@ const NewsAggregator = () => {
   const LayoutComponent = useMemo(() => {
     return isLoading ? <Spinner /> : <NewsCards newsData={news} />;
   }, [isLoading, news]);
+
+  const navScrollHandler = () => {
+    const Scroll = document.body.getBoundingClientRect().top;
+    setScroll(Scroll);
+    console.log(Scroll);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", navScrollHandler);
+    return () => {
+      window.removeEventListener("scroll", navScrollHandler);
+    };
+  }, [scroll, navScrollHandler]);
 
   return (
     <div>

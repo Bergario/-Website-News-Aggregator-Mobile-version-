@@ -15,7 +15,7 @@
             margin-left: 5px;
             margin-bottom: 10px;
             border-radius: 6px;
-            background-color: #ffffff73;
+            background-color: #ffffff;
             font-size: 12px;
             line-height: 200%;
             color: #a9a7a7;
@@ -33,7 +33,21 @@
         .Navigation{
             overflow: auto;
             white-space: nowrap;
-            background-image: linear-gradient(#dce1e9, #e5e5ec8a)
+            /* background-image: linear-gradient(#e9dfdc, #eae9e3); */
+            background-color: #eaece5;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .Visible{
+            transform: translateY(0);
+            transition: all 0.4s ease-in;
+        }
+
+        .Invisible{
+            transform: translateY(-100%);
+            transition: all 0.4s ease-out;
         }
 
     }

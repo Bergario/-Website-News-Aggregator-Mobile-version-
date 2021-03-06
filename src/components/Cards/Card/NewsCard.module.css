@@ -25,8 +25,7 @@
     }
 
        hr{
-          color: #b0001c;
-          background-color: #b0001c;
+          border-top: 1px solid #b0001c;
       }
 
     .NewsCard p{
@@ -37,7 +36,7 @@
 
      .NewsCard p span{
          padding: 0;
-         font-size: 12px;
+         font-size: 10px;
          color: rgb(160, 160, 160);
          font-weight: 600;
      }

@@ -4,9 +4,13 @@ import classes from "./navigation.module.css";
 
 const navigation = React.memo((props) => {
   console.log("NAV RENDERED");
-  const { category, onSelectCategory } = props;
+  const { category, onSelectCategory, onVisibleNav } = props;
+  let attachedClass = [classes.Navigation, classes.Visible];
+  if (!onVisibleNav) {
+    attachedClass = [classes.Navigation, classes.Invisible];
+  }
   return (
-    <div className={classes.Navigation}>
+    <div className={attachedClass.join(" ")}>
       {category &&
         category.map((cat, i) => {
           return (

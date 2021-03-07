@@ -5,28 +5,35 @@
 
     @media(max-width: 480px) {
         .Navigation li{
-            padding: 0 10px;
-            margin-top: 90px;
+            margin-top: 70px;
             display: inline-block;
             height: 25px;
             font-weight: 500;
-            border: 1px solid #d0cccc;
+            line-height: 200%;
+            box-sizing: border-box;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .Navigation a{
+            text-decoration: none;
+            color: #a9a7a7;
+            padding: 3px 10px;
             margin-right: 10px;
             margin-left: 5px;
-            margin-bottom: 10px;
             border-radius: 6px;
+            border: 1px solid #d0cccc;
             background-color: #ffffff;
-            font-size: 12px;
-            line-height: 200%;
-            color: #a9a7a7;
+            box-sizing: border-box;
         }
         
-       .Navigation li:active,
-       Navigation li:hover {
+       .Navigation a:active,
+       .Navigation .Active{
             background-color: #c8232c;
-            color: rgb(231, 231, 231);
+            color: rgb(255, 255, 255);
             border-radius: 5px;
             margin-top: 80px;
+            border: 1px solid #a74824;
             
         }
 

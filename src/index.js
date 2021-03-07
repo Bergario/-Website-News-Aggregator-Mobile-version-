@@ -3,13 +3,16 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <h1>Desktop website is not available at this time</h1>
-    <h2>please go to the mobile version of the website!</h2>
-    <h3>Thank You</h3>
-    <App />
+    <h1 className="a">Desktop website is not available at this time</h1>
+    <h2 className="a">please go to the mobile version of the website!</h2>
+    <h3 className="a">Thank You</h3>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );

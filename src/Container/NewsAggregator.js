@@ -72,10 +72,8 @@ const NewsAggregator = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", navScrollHandler);
-    console.log("add");
     return () => {
       window.removeEventListener("scroll", navScrollHandler);
-      console.log("cleanup");
     };
   }, [scroll, navScrollHandler]);
 

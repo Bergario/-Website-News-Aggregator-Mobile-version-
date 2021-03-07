@@ -28,9 +28,12 @@
 
       .NewsTitle p {
           padding: 10px;
-          font-size: 16px;
+          font-size: 20px;
           margin: 5px 20px;
-          color: #565353;
+          color: #131313;
+          font-family: 'Playfair Display', serif;
+          font-weight: 700;
+
       }
 }
 

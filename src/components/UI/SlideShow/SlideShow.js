@@ -14,7 +14,7 @@ const Slideshow = () => {
   useEffect(() => {
     axios
       .get(
-        "https://newsapi.org/v2/top-headlines?country=id&category=technology&apiKey=f6352cf470204beca0112cd570c29114"
+        "https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=f6352cf470204beca0112cd570c29114"
       )
       .then((response) => {
         setNewsSlide(response.data);

@@ -8,7 +8,7 @@ body {
   /* background-color: #e5e5ec8a; */
   background-image: linear-gradient(#e5e5ec8a, white);
 }
-body h1, body h2, body h3{
+.a{
   text-align: center;
 }
 
@@ -18,7 +18,7 @@ code {
 }
 
 @media(max-width: 480px) {
-  body h1, body h2, body h3 {
+  .a{
     display: none;
   }
 }

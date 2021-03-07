@@ -1,5 +1,7 @@
 import React from "react";
 
+import { NavLink } from "react-router-dom";
+
 import classes from "./navigation.module.css";
 
 const navigation = React.memo((props) => {
@@ -11,11 +13,18 @@ const navigation = React.memo((props) => {
   }
   return (
     <div className={attachedClass.join(" ")}>
+      <li>
+        <NavLink to="/" exact activeClassName={classes.Active}>
+          All
+        </NavLink>
+      </li>
       {category &&
         category.map((cat, i) => {
           return (
             <li key={i} onClick={onSelectCategory.bind(this, cat)}>
-              {cat}
+              <NavLink to={`/${cat}`} activeClassName={classes.Active}>
+                {cat}
+              </NavLink>
             </li>
           );
         })}

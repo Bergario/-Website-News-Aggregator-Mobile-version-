@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import axios from "axios";
@@ -25,11 +25,14 @@ const Slideshow = () => {
       });
   }, []);
 
-  const slidePost =
-    newsSlide &&
-    newsSlide.articles.map((result, i) => (
-      <ImageSlide title={result.title} imgLink={result.urlToImage} key={i} />
-    ));
+  const slidePost = useMemo(() => {
+    return (
+      newsSlide &&
+      newsSlide.articles.map((result, i) => (
+        <ImageSlide title={result.title} imgLink={result.urlToImage} key={i} />
+      ))
+    );
+  }, [newsSlide]);
 
   const Posts = newsSlide ? (
     <div>

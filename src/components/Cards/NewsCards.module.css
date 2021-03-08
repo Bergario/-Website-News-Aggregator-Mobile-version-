@@ -1,3 +1,13 @@
 /* .NewsCards{
     width: 100%;
 } */
+
+@media(maxwidth: 480px){
+    .TopNews p {
+        font-size: 20px;
+        font-family: 'Playfair Display',
+            serif;
+            display: inline;
+
+    }
+}

@@ -7,11 +7,18 @@ const NewsCards = React.memo((props) => {
   console.log("CARDS");
 
   const { newsData } = props;
+  console.log(newsData);
+
   return (
     <div className={classes.NewsCards}>
+      <div className={classes.TopNews}>
+        <p> {newsData && newsData.articles[2].title}</p>
+      </div>
       <h3>HEADLINES</h3>
       {newsData &&
         newsData.articles.map((result, i) => {
+          // console.log(result.length);
+
           return (
             <NewsCard
               key={i}

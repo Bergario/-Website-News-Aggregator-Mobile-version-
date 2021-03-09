@@ -11,16 +11,11 @@ const navigation = React.memo((props) => {
   if (!onVisibleNav) {
     attachedClass = [classes.Navigation, classes.Invisible];
   }
+
   return (
     <div className={attachedClass.join(" ")}>
       <li>
-        <NavLink
-          to="/"
-          exact
-          activeClassName={classes.Active}
-          path="category"
-          focus="true"
-        >
+        <NavLink to="/" exact activeClassName={classes.Active} focus="true">
           All
         </NavLink>
       </li>

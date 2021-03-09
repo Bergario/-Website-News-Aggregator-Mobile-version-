@@ -27,7 +27,6 @@ const NewsAggregator = () => {
   const history = useHistory().location;
 
   // const params = useParams();
-  // console.log(params);
 
   useEffect(() => {
     console.log("COMPONENT DID MOUNT");
@@ -102,8 +101,8 @@ const NewsAggregator = () => {
       />
       <Route exact path="/" render={() => CardsComponent} />
       <Route
-        path={history.pathname == "/" ? "/general" : history.pathname}
-        render={() => CardsComponent}
+        path={history.pathname}
+        render={() => (history.pathname === "/" ? null : CardsComponent)}
       />
     </div>
   );

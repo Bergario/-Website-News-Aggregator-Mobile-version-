@@ -5,10 +5,6 @@ import axios from "axios";
 import ImageSlide from "./ImageSlide";
 
 const Slideshow = () => {
-  // let newsResult = null;
-  // newsResult = props.newsData.articles;
-  // console.log(newsResult);
-
   const [newsSlide, setNewsSlide] = useState(null);
 
   useEffect(() => {
@@ -17,8 +13,7 @@ const Slideshow = () => {
         "https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=f6352cf470204beca0112cd570c29114"
       )
       .then((response) => {
-        setNewsSlide(response.data);
-        console.log(response.data);
+        // setNewsSlide(response.data);
       })
       .catch((error) => {
         console.log(error);

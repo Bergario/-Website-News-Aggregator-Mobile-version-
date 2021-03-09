@@ -14,7 +14,8 @@ const NewsCard = React.memo((props) => {
       <span>{props.title}</span>
       <hr />
       <p>
-        {actions.TimesCounter(props.newsTimes)} | <span>{props.author}</span>
+        {actions.TimesCounter(props.newsTimes)} |{" "}
+        <span>{props.author ? props.author : props.sources}</span>
       </p>
       <li className={classes.Link}>
         <span>read more {">"}</span>

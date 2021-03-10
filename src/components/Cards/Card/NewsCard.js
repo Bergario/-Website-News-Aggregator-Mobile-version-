@@ -8,19 +8,30 @@ const NewsCard = React.memo((props) => {
 
   return (
     <div className={classes.NewsCard}>
-      <div className={classes.ImgCard}>
+      <div
+        className={classes.ImgCard}
+        onClick={() => actions.openNewTabHandler(props.toUrl)}
+      >
         <img src={props.imgLink} alt="true" />
       </div>
-      <span>{props.title}</span>
+      <span onClick={() => actions.openNewTabHandler(props.toUrl)}>
+        {props.title}
+      </span>
       <hr />
       <p>
         {actions.TimesCounter(props.newsTimes)} |{" "}
         <span>{props.author ? props.author : props.sources}</span>
       </p>
-      <li className={classes.Link}>
+      <li
+        className={classes.Link}
+        onClick={() => actions.openNewTabHandler(props.toUrl)}
+      >
         <span>read more {">"}</span>
       </li>
-      <li className={classes.Link}>
+      <li
+        onClick={() => actions.openNewTabHandler(props.toUrl)}
+        className={classes.Link}
+      >
         <FaGlobeAmericas />
         {props.sources}
       </li>

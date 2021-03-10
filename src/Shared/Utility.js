@@ -15,3 +15,7 @@ export const TimesCounter = (newsDate) => {
 
   return y;
 };
+
+export const openNewTabHandler = (link) => {
+  window.open(link, "_blank");
+};

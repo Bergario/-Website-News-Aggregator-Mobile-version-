@@ -6,7 +6,7 @@ import axios from "axios";
 import Spinner from "../components/UI/Spinner/Spinner";
 import ErrorModal from "../components/UI/Modal/ErrorModal";
 import Slideshow from "../components/UI/SlideShow/SlideShow";
-import { Route, useHistory } from "react-router-dom";
+import { Route, useHistory, Switch } from "react-router-dom";
 
 const NewsAggregator = () => {
   const [news, setNews] = useState("");
@@ -25,8 +25,6 @@ const NewsAggregator = () => {
   ]);
 
   const history = useHistory().location;
-
-  // const params = useParams();
 
   useEffect(() => {
     console.log("COMPONENT DID MOUNT");
@@ -92,6 +90,7 @@ const NewsAggregator = () => {
         onSelectCategory={selectCategoryHandler}
         onVisibleNav={visibleNavbar}
       />
+      {/* <Switch> */}
       <Route
         path="/"
         exact
@@ -102,8 +101,10 @@ const NewsAggregator = () => {
       <Route exact path="/" render={() => CardsComponent} />
       <Route
         path={history.pathname}
+        // path="/:id"
         render={() => (history.pathname === "/" ? null : CardsComponent)}
       />
+      {/* </Switch> */}
     </div>
   );
 };

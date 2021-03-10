@@ -2,6 +2,7 @@ import React from "react";
 
 import NewsCard from "./Card/NewsCard";
 import classes from "./NewsCards.module.css";
+import * as actions from "../../Shared/Utility";
 
 const NewsCards = React.memo((props) => {
   console.log("CARDS");
@@ -10,17 +11,24 @@ const NewsCards = React.memo((props) => {
   console.log(newsData);
 
   const randomNum = Math.floor(Math.random() * 10 + 1);
-  console.log(randomNum);
+  const title = newsData.articles[randomNum].title;
+  const description = newsData.articles[randomNum].description;
+  const url = newsData.articles[randomNum].url;
 
   return (
     <div className={classes.NewsCards}>
       <div className={classes.TopNews}>
-        <h2> {newsData && newsData.articles[randomNum].title}</h2>
+        <h2> {newsData && title}</h2>
         <p>
-          {newsData &&
-            newsData.articles[randomNum].description.substring(0, 150)}
+          {newsData && description.substring(0, 150)}
           ...
         </p>
+        <div
+          className={classes.Link}
+          onClick={() => actions.openNewTabHandler(url)}
+        >
+          Read full story {">"}
+        </div>
       </div>
       <hr />
       <h3>HEADLINES</h3>
@@ -36,6 +44,7 @@ const NewsCards = React.memo((props) => {
               newsTimes={result.publishedAt}
               author={result.author}
               sources={result.source.name}
+              toUrl={result.url}
             />
           );
         })}

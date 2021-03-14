@@ -13,7 +13,7 @@ const Slideshow = () => {
         "https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=f6352cf470204beca0112cd570c29114"
       )
       .then((response) => {
-        // setNewsSlide(response.data);
+        setNewsSlide(response.data);
       })
       .catch((error) => {
         console.log(error);

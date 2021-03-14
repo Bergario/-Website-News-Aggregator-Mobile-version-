@@ -6,6 +6,7 @@ import axios from "axios";
 import Spinner from "../components/UI/Spinner/Spinner";
 import ErrorModal from "../components/UI/Modal/ErrorModal";
 import Slideshow from "../components/UI/SlideShow/SlideShow";
+import { Route, useHistory, Switch } from "react-router-dom";
 
 const NewsAggregator = () => {
   const [news, setNews] = useState("");
@@ -14,21 +15,24 @@ const NewsAggregator = () => {
   const [scroll, setScroll] = useState("");
   const [visibleNavbar, setVisibleNavbar] = useState(true);
   const [category] = useState([
-    "business",
-    "entertainment",
-    "general",
-    "health",
-    "science",
-    "sports",
-    "technology",
+    "Business",
+    "Entertainment",
+    "General",
+    "Health",
+    "Science",
+    "Sports",
+    "Technology",
   ]);
+
+  const history = useHistory().location;
+
   useEffect(() => {
     console.log("COMPONENT DID MOUNT");
 
     setIsLoading(true);
     axios
       .get(
-        "http://newsapi.org/v2/everything?q=apple&from=2021-03-02&to=2021-03-02&sortBy=popularity&apiKey=f6352cf470204beca0112cd570c29114"
+        "https://newsapi.org/v2/everything?q=bitcoin&apiKey=f6352cf470204beca0112cd570c29114"
       )
       .then((response) => {
         setNews(response.data);
@@ -59,7 +63,7 @@ const NewsAggregator = () => {
     setIsLoading(false);
   }, []);
 
-  const LayoutComponent = useMemo(() => {
+  const CardsComponent = useMemo(() => {
     return isLoading ? <Spinner /> : <NewsCards newsData={news} />;
   }, [isLoading, news]);
 
@@ -86,8 +90,21 @@ const NewsAggregator = () => {
         onSelectCategory={selectCategoryHandler}
         onVisibleNav={visibleNavbar}
       />
-      {isLoading ? null : <Slideshow newsData={news} />}
-      {LayoutComponent}
+      {/* <Switch> */}
+      <Route
+        path="/"
+        exact
+        render={() => {
+          return isLoading ? null : <Slideshow newsData={news} />;
+        }}
+      />
+      <Route exact path="/" render={() => CardsComponent} />
+      <Route
+        path={history.pathname}
+        // path="/:id"
+        render={() => (history.pathname === "/" ? null : CardsComponent)}
+      />
+      {/* </Switch> */}
     </div>
   );
 };

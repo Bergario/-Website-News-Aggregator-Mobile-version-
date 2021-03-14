@@ -11,22 +11,21 @@ const NewsCards = React.memo((props) => {
   console.log(newsData);
 
   const randomNum = Math.floor(Math.random() * 10 + 1);
-  const title = newsData.articles[randomNum].title;
-  const description = newsData.articles[randomNum].description;
-  const url = newsData.articles[randomNum].url;
+  const title = newsData && newsData.articles[randomNum].title;
+  const description = newsData && newsData.articles[randomNum].description;
+  const url = newsData && newsData.articles[randomNum].url;
 
   return (
     <div className={classes.NewsCards}>
       <div className={classes.TopNews}>
-        <h2> {newsData && title}</h2>
+        <h2> {title}</h2>
         <p>
-          {newsData && description.substring(0, 150)}
+          {description.substring(0, 150)}
           ...
         </p>
         <div
           className={classes.Link}
-          onClick={() => actions.openNewTabHandler(url)}
-        >
+          onClick={() => actions.openNewTabHandler(url)}>
           Read full story {">"}
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback, useMemo } from "react";
 import NewsCards from "../components/Cards/NewsCards";
+import TopNews from "../components/TopNews/TopNews";
 import Layout from "../components/Layout/Layout";
 import Navigation from "../components/Navigation/navigation";
 import axios from "axios";
@@ -32,7 +33,7 @@ const NewsAggregator = () => {
     setIsLoading(true);
     axios
       .get(
-        "https://newsapi.org/v2/everything?q=bitcoin&apiKey=f6352cf470204beca0112cd570c29114"
+        "https://newsapi.org/v2/top-headlines?country=us&page=1&apiKey=f6352cf470204beca0112cd570c29114"
       )
       .then((response) => {
         setNews(response.data);
@@ -91,6 +92,7 @@ const NewsAggregator = () => {
         onVisibleNav={visibleNavbar}
       />
       {/* <Switch> */}
+      <TopNews newsData={news} />
       <Route
         path="/"
         exact

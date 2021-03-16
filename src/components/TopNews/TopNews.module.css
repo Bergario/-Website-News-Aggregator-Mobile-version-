@@ -1,0 +1,39 @@
+@media(max-width: 480px) {
+    .TopNews h1 {
+        font-size: 2rem;
+        font-family: 'Playfair Display',
+            serif;
+        text-align: left;
+        padding: 0 12px;
+        margin-bottom: 0;
+        margin-top: 0;
+
+
+    }
+
+    .TopNews h2 {
+        font-family: 'Playfair Display',
+        serif;
+        text-align: left;
+        padding: 0 12px;
+        margin-bottom: 0;
+        margin-top: 0;
+
+    }
+
+    .TopNews p {
+        font-family: 'Playfair Display',
+            serif;
+        text-align: left;
+        padding: 0 12px;
+        margin: 0;
+        color: rgb(133, 130, 130);
+    }
+
+    .Link {
+        font-size: 12px;
+        text-align: left;
+        color: #b0001c;
+        padding: 5px 12px;
+    }
+}

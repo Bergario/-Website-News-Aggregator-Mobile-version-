@@ -1,34 +1,25 @@
-@media(max-width:480px){
+@media (max-width: 480px) {
+  .Layout {
+    width: 100%;
+    height: 45px;
+    background-image: linear-gradient(#181717, #414141);
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    font-size: 30px;
+    padding: 0;
+    font-weight: 700;
+    color: rgb(229, 241, 247);
+    font-family: "Berkshire Swash", cursive;
+    box-shadow: 1px 2px 5px #777777;
+  }
 
-    .Layout{
-        width: 100%;
-        height: 60px;
-        background-image: linear-gradient(#e6cecf, #eaece5);
-        position: fixed;
-        z-index: 1000;
-        top: 0;
-        border-bottom-right-radius: 20px;
-        border-bottom-left-radius: 20px;
-        /* box-shadow: 1px 5px 10px #e7e8e9; */
-    }
-
-    .Logo {
-        font-size: 30px;
-        padding: 0;
-        /* margin: 0px auto; */
-        line-height: 0%;
-        /* text-shadow: -8px 18px 4px rgb(117, 131, 141); */
-        font-weight: bolder;
-        color: rgb(65, 68, 70);
-        font-family: 'Playfair Display', serif;
-        font-weight: 700;
-        font-style: italic;
-    }
-    .Logo span{
-        font-size: 15px;
-        padding: 0;
-        margin: 0px auto;
-        font-style: italic;
-        /* text-shadow: 3px -3px 4px rgb(226, 227, 228) */
-    }
+  .Layout span {
+    font-size: 15px;
+    padding: 0;
+    margin: 0px auto;
+    font-family: "Cormorant Unicase", serif;
+    font-weight: bold;
+    /* text-shadow: 3px -3px 4px rgb(226, 227, 228) */
+  }
 }

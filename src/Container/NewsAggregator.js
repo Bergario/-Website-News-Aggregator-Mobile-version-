@@ -15,6 +15,7 @@ const NewsAggregator = () => {
   const [error, setError] = useState(null);
   const [scroll, setScroll] = useState("");
   const [visibleNavbar, setVisibleNavbar] = useState(true);
+  const [categorySelected, setCategorySelected] = useState(null);
   const [category] = useState([
     "Business",
     "Entertainment",
@@ -46,6 +47,7 @@ const NewsAggregator = () => {
 
   const selectCategoryHandler = useCallback((category) => {
     setIsLoading(true);
+    setCategorySelected(category.toUpperCase());
     axios
       .get(
         `https://newsapi.org/v2/top-headlines?country=id&category=${category}&apiKey=f6352cf470204beca0112cd570c29114`
@@ -64,8 +66,13 @@ const NewsAggregator = () => {
     setIsLoading(false);
   }, []);
 
+  //Card News Component
   const CardsComponent = useMemo(() => {
-    return isLoading ? <Spinner /> : <NewsCards newsData={news} />;
+    return isLoading ? (
+      <Spinner />
+    ) : (
+      <NewsCards newsData={news} onCategorySelected={categorySelected} />
+    );
   }, [isLoading, news]);
 
   // Navbar auto hide
@@ -82,6 +89,11 @@ const NewsAggregator = () => {
     };
   }, [scroll, navScrollHandler]);
 
+  //TopNews Component
+  const Topnews = useMemo(() => {
+    return isLoading ? null : <TopNews newsData={news} />;
+  }, [isLoading, news]);
+
   return (
     <div>
       {error && <ErrorModal onClose={errorModalClose}>{error}</ErrorModal>}
@@ -92,7 +104,7 @@ const NewsAggregator = () => {
         onVisibleNav={visibleNavbar}
       />
       {/* <Switch> */}
-      <TopNews newsData={news} />
+      {Topnews}
       <Route
         path="/"
         exact

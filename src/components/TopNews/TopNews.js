@@ -2,37 +2,43 @@ import React from "react";
 import classes from "./TopNews.module.css";
 import * as actions from "../../Shared/Utility";
 
-const TopNews = React.memo((props) => {
+const TopNews = (props) => {
+  console.log("TOP NEWS");
+
   const { newsData } = props;
+  console.log(newsData);
 
   const randomNum = Math.floor(Math.random() * 10 + 1);
-  const TopNews = newsData && newsData.articles;
+  const { title, url } = newsData && newsData.articles[randomNum];
+  // const title = newsData && newsData.articles[randomNum].title;
+  const description = newsData && newsData.articles[randomNum].description;
+  // const url = newsData && newsData.articles[randomNum.url];
 
   return (
     <div className={classes.TopNews}>
       <div>
-        <h1> {TopNews[randomNum].title}</h1>
+        <h1> {title}</h1>
         <p>
-          {TopNews[randomNum].description.substring(0, 150)}
+          {description.substring(0, 150)}
           ...
         </p>
         <div
           className={classes.Link}
-          onClick={() => actions.openNewTabHandler(TopNews[randomNum].url)}
+          onClick={() => actions.openNewTabHandler(url)}
         >
           Read full story {">"}
         </div>
       </div>
       <hr />
       <div>
-        <h2> {TopNews[randomNum + 1].title}</h2>
+        <h2> {title}</h2>
         <p>
-          {TopNews[randomNum + 1].description.substring(0, 150)}
+          {description.substring(0, 150)}
           ...
         </p>
         <div
           className={classes.Link}
-          onClick={() => actions.openNewTabHandler(TopNews[randomNum + 1].url)}
+          onClick={() => actions.openNewTabHandler(url)}
         >
           Read full story {">"}
         </div>
@@ -40,6 +46,6 @@ const TopNews = React.memo((props) => {
       <hr />
     </div>
   );
-});
+};
 
 export default TopNews;

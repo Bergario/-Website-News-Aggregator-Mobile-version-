@@ -2,31 +2,10 @@
     width: 100%;
 } */
 
-@media(max-width: 480px){
-    .TopNews h2 {
-        /* font-size: 25px; */
-        font-family: 'Playfair Display',
-            serif; 
-        text-align: left;
-        padding: 0 12px; 
-        margin-bottom: 0;
-
-
-    }
-
-    .TopNews p {
-         font-family: 'Playfair Display',
-         serif;
-         text-align: left;
-         padding: 0 12px;
-         margin: 0;
-         color: rgb(133, 130, 130); 
-    }
-
-    .Link{
-        font-size: 12px;
-        text-align: left;
-        color: #b0001c;
-        padding:5px 12px;
-    }
+@media (max-width: 480px) {
+  .NewsCards h1 {
+    /* font-size: 25px; */
+    font-family: "Cormorant Unicase", serif;
+    text-decoration: underline #dddd;
+  }
 }

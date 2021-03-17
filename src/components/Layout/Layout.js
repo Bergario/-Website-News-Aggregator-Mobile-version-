@@ -8,9 +8,7 @@ const Layout = React.memo(() => {
   return (
     <div>
       <div className={classes.Layout}>
-        <p className={classes.Logo}>
-          WhiteBoard<span>NEWS</span>
-        </p>
+        WhiteBoard<span>NEWS</span>
       </div>
     </div>
   );

@@ -2,17 +2,16 @@ import React from "react";
 
 import NewsCard from "./Card/NewsCard";
 import classes from "./NewsCards.module.css";
-import * as actions from "../../Shared/Utility";
 
 const NewsCards = React.memo((props) => {
   console.log("CARDS");
 
-  const { newsData } = props;
-  console.log(newsData);
+  const { newsData, onCategorySelected } = props;
+  console.log(onCategorySelected);
 
   return (
     <div className={classes.NewsCards}>
-      <h3>HEADLINES</h3>
+      <h1>{onCategorySelected ? onCategorySelected : "HEADLINES"}</h1>
       {newsData &&
         newsData.articles.map((result, i) => {
           // console.log(result.length);

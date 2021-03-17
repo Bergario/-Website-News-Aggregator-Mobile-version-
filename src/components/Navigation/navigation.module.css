@@ -1,60 +1,58 @@
-    .Navigation h4 {
-        display: inline-block;
-        padding: 0 15px;
-    }
+.Navigation h4 {
+  display: inline-block;
+  padding: 0 15px;
+}
 
-    @media(max-width: 480px) {
-        .Navigation li{
-            margin-top: 70px;
-            display: inline-block;
-            height: 25px;
-            font-weight: 500;
-            line-height: 200%;
-            box-sizing: border-box;
-            font-size: 12px;
-            margin-bottom: 10px;
-        }
+@media (max-width: 480px) {
+  .Navigation li {
+    margin-top: 55px;
+    display: inline-block;
+    height: 25px;
+    font-weight: 500;
+    line-height: 200%;
+    box-sizing: border-box;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
 
-        .Navigation a{
-            text-decoration: none;
-            color: #a9a7a7;
-            padding: 3px 10px;
-            margin-right: 10px;
-            margin-left: 5px;
-            border-radius: 6px;
-            border: 1px solid #d0cccc;
-            background-color: #ffffff;
-            box-sizing: border-box;
-        }
-        
-       .Navigation a:active,
-       .Navigation .Active{
-            background-color: #c8232c;
-            color: rgb(255, 255, 255);
-            border-radius: 5px;
-            margin-top: 80px;
-            border: 1px solid #a74824;
-            
-        }
+  .Navigation a {
+    text-decoration: none;
+    color: #a9a7a7;
+    padding: 3px 10px;
+    margin-right: 10px;
+    margin-left: 5px;
+    border-radius: 6px;
+    border: 1px solid #d0cccc;
+    background-color: #ffffff;
+    box-sizing: border-box;
+  }
 
-        .Navigation{
-            overflow: auto;
-            white-space: nowrap;
-            /* background-image: linear-gradient(#e9dfdc, #eae9e3); */
-            background-color: #eaece5;
-            position: sticky;
-            top: 0;
-            z-index: 999;
-        }
+  .Navigation a:active,
+  .Navigation .Active {
+    background-color: #c8232c;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    margin-top: 80px;
+    border: 1px solid #a74824;
+  }
 
-        .Visible{
-            transform: translateY(0);
-            transition: all 0.4s ease-in;
-        }
+  .Navigation {
+    overflow: auto;
+    white-space: nowrap;
+    /* background-image: linear-gradient(#e9dfdc, #eae9e3); */
+    background-color: #f1f1f5;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
 
-        .Invisible{
-            transform: translateY(-100%);
-            transition: all 0.4s ease-out;
-        }
+  .Visible {
+    transform: translateY(0);
+    transition: all 0.4s ease-in;
+  }
 
-    }
+  .Invisible {
+    transform: translateY(-100%);
+    transition: all 0.4s ease-out;
+  }
+}

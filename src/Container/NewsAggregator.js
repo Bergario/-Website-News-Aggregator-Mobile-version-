@@ -34,7 +34,7 @@ const NewsAggregator = () => {
     setIsLoading(true);
     axios
       .get(
-        "https://newsapi.org/v2/top-headlines?country=us&page=1&apiKey=f6352cf470204beca0112cd570c29114"
+        "https://newsapi.org/v2/top-headlines?country=id&apiKey=f6352cf470204beca0112cd570c29114"
       )
       .then((response) => {
         setNews(response.data);
@@ -104,7 +104,7 @@ const NewsAggregator = () => {
         onVisibleNav={visibleNavbar}
       />
       {/* <Switch> */}
-      {Topnews}
+
       <Route
         path="/"
         exact
@@ -112,6 +112,7 @@ const NewsAggregator = () => {
           return isLoading ? null : <Slideshow newsData={news} />;
         }}
       />
+      {Topnews}
       <Route exact path="/" render={() => CardsComponent} />
       <Route
         path={history.pathname}

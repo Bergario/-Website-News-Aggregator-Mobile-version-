@@ -6,6 +6,6 @@
   .NewsCards h1 {
     /* font-size: 25px; */
     font-family: "Cormorant Unicase", serif;
-    text-decoration: underline #dddd;
+    text-shadow: 0px 5px 5px #a9a6a6;
   }
 }

@@ -1,0 +1,25 @@
+@media (max-width: 480px) {
+  .Container {
+    overflow: auto;
+    white-space: nowrap;
+  }
+
+  .HorizontalCard {
+    width: 45%;
+    display: inline-block;
+    background-color: rgb(224, 219, 224);
+    margin: 10px 5px;
+    white-space: normal;
+    box-sizing: border-box;
+  }
+
+  .HorizontalCard img {
+    width: 100%;
+  }
+
+  .Card_Content p {
+    margin-top: 0;
+    text-align: left;
+    padding: 5px;
+  }
+}

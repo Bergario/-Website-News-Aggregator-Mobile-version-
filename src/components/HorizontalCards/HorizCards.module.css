@@ -1,0 +1,6 @@
+@media (max-width: 480px) {
+  .Container {
+    overflow: auto;
+    white-space: nowrap;
+  }
+}

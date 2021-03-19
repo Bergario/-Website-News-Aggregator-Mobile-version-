@@ -8,6 +8,7 @@ import Spinner from "../components/UI/Spinner/Spinner";
 import ErrorModal from "../components/UI/Modal/ErrorModal";
 import Slideshow from "../components/UI/SlideShow/SlideShow";
 import { Route, useHistory, Switch } from "react-router-dom";
+import HorizCards from "../components/HorizontalCards/HorizCards";
 
 const NewsAggregator = () => {
   const [news, setNews] = useState("");
@@ -94,6 +95,16 @@ const NewsAggregator = () => {
     return isLoading ? null : <TopNews newsData={news} />;
   }, [isLoading, news]);
 
+  //SlideShow Component
+  const slideshow = useMemo(() => {
+    return <Slideshow />;
+  }, []);
+
+  // Horizontal Card News Component
+  const HorizontalCardsNews = useMemo(() => {
+    return <HorizCards />;
+  }, []);
+
   return (
     <div>
       {error && <ErrorModal onClose={errorModalClose}>{error}</ErrorModal>}
@@ -103,23 +114,20 @@ const NewsAggregator = () => {
         onSelectCategory={selectCategoryHandler}
         onVisibleNav={visibleNavbar}
       />
-      {/* <Switch> */}
-
       <Route
         path="/"
         exact
         render={() => {
-          return isLoading ? null : <Slideshow newsData={news} />;
+          return isLoading ? null : slideshow;
         }}
       />
       {Topnews}
       <Route exact path="/" render={() => CardsComponent} />
       <Route
         path={history.pathname}
-        // path="/:id"
         render={() => (history.pathname === "/" ? null : CardsComponent)}
       />
-      {/* </Switch> */}
+      {HorizontalCardsNews}
     </div>
   );
 };

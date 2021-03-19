@@ -8,16 +8,20 @@ const Slideshow = () => {
   const [newsSlide, setNewsSlide] = useState(null);
 
   useEffect(() => {
+    let isMounted = true;
     axios
       .get(
-        "https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=f6352cf470204beca0112cd570c29114"
+        "https://newsapi.org/v2/everything?q=technology&apiKey=f6352cf470204beca0112cd570c29114"
       )
       .then((response) => {
-        setNewsSlide(response.data);
+        isMounted && setNewsSlide(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const slidePost = useMemo(() => {

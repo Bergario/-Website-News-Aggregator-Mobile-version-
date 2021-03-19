@@ -6,7 +6,7 @@ import Button from "../UI/Button/Button";
 import NewsCard from "./Card/NewsCard";
 import classes from "./NewsCards.module.css";
 
-const NewsCards = React.memo((props) => {
+const NewsCards = (props) => {
   console.log("CARDS");
   const { newsData, onCategorySelected } = props;
 
@@ -62,6 +62,6 @@ const NewsCards = React.memo((props) => {
       </Button>
     </div>
   );
-});
+};
 
 export default NewsCards;

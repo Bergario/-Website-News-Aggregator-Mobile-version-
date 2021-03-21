@@ -1,25 +1,23 @@
 @media (max-width: 480px) {
-  .Container {
-    overflow: auto;
-    white-space: nowrap;
-  }
 
   .HorizontalCard {
     width: 45%;
     display: inline-block;
-    background-color: rgb(224, 219, 224);
+    background-color: rgb(245, 245, 245);
     margin: 10px 5px;
-    white-space: normal;
     box-sizing: border-box;
+    box-shadow: 1px 3px 5px #ccc;
   }
 
   .HorizontalCard img {
-    width: 100%;
+    width: 170px;
+    height: 90px;
   }
 
-  .Card_Content p {
+  .Card_Content {
     margin-top: 0;
     text-align: left;
     padding: 5px;
+    font-size: 12px;
   }
 }

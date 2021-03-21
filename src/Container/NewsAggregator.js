@@ -1,99 +1,70 @@
-import React, { useEffect, useState, useCallback, useMemo } from "react";
+import React, {
+  useEffect,
+  useState,
+  useCallback,
+  useMemo,
+  useReducer,
+} from "react";
 import NewsCards from "../components/Cards/NewsCards";
 import TopNews from "../components/TopNews/TopNews";
-import Layout from "../components/Layout/Layout";
-import Navigation from "../components/Navigation/navigation";
 import axios from "axios";
 import Spinner from "../components/UI/Spinner/Spinner";
 import ErrorModal from "../components/UI/Modal/ErrorModal";
 import Slideshow from "../components/UI/SlideShow/SlideShow";
-import { Route, useHistory, Switch } from "react-router-dom";
 import HorizCards from "../components/HorizontalCards/HorizCards";
+
+const httpReducer = (curHttpState, action) => {
+  switch (action.type) {
+    case "SEND":
+      return { loading: true, error: null };
+    case "RESPONSE":
+      return { ...curHttpState, loading: false };
+    case "ERROR":
+      return { loading: false, error: action.errorMessage };
+    case "CLOSE":
+      return { loading: false, error: null };
+    default:
+      throw new Error("Should not be reached!");
+  }
+};
 
 const NewsAggregator = () => {
   const [news, setNews] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [scroll, setScroll] = useState("");
-  const [visibleNavbar, setVisibleNavbar] = useState(true);
-  const [categorySelected, setCategorySelected] = useState(null);
-  const [category] = useState([
-    "Business",
-    "Entertainment",
-    "General",
-    "Health",
-    "Science",
-    "Sports",
-    "Technology",
-  ]);
-
-  const history = useHistory().location;
+  const [httpState, dispatchHttp] = useReducer(httpReducer, {
+    loading: false,
+    error: null,
+  });
 
   useEffect(() => {
     console.log("COMPONENT DID MOUNT");
 
-    setIsLoading(true);
+    dispatchHttp({ type: "SEND" });
     axios
       .get(
         "https://newsapi.org/v2/top-headlines?country=id&apiKey=f6352cf470204beca0112cd570c29114"
       )
       .then((response) => {
         setNews(response.data);
-        setIsLoading(false);
+        dispatchHttp({ type: "RESPONSE" });
       })
       .catch((error) => {
-        setError(error.message);
-      });
-  }, []);
-
-  const selectCategoryHandler = useCallback((category) => {
-    setIsLoading(true);
-    setCategorySelected(category.toUpperCase());
-    axios
-      .get(
-        `https://newsapi.org/v2/top-headlines?country=id&category=${category}&apiKey=f6352cf470204beca0112cd570c29114`
-      )
-      .then((response) => {
-        setNews(response.data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        setError(error.message);
+        dispatchHttp({ type: "SEND", errorMessage: "Something went wrong!" });
       });
   }, []);
 
   const errorModalClose = useCallback(() => {
-    setError(null);
-    setIsLoading(false);
+    dispatchHttp({ type: "CLOSE" });
   }, []);
 
   //Card News Component
   const CardsComponent = useMemo(() => {
-    return isLoading ? (
-      <Spinner />
-    ) : (
-      <NewsCards newsData={news} onCategorySelected={categorySelected} />
-    );
-  }, [isLoading, news]);
-
-  // Navbar auto hide
-  const navScrollHandler = useCallback(() => {
-    const scrollTop = document.body.getBoundingClientRect().top;
-    setScroll(scrollTop);
-    setVisibleNavbar(scroll <= scrollTop);
-  }, [scroll]);
-
-  useEffect(() => {
-    window.addEventListener("scroll", navScrollHandler);
-    return () => {
-      window.removeEventListener("scroll", navScrollHandler);
-    };
-  }, [scroll, navScrollHandler]);
+    return httpState.loading ? <Spinner /> : <NewsCards newsData={news} />;
+  }, [httpState.loading, news]);
 
   //TopNews Component
   const Topnews = useMemo(() => {
-    return isLoading ? null : <TopNews newsData={news} />;
-  }, [isLoading, news]);
+    return httpState.loading ? null : <TopNews newsData={news} />;
+  }, [httpState.loading, news]);
 
   //SlideShow Component
   const slideshow = useMemo(() => {
@@ -102,31 +73,16 @@ const NewsAggregator = () => {
 
   // Horizontal Card News Component
   const HorizontalCardsNews = useMemo(() => {
-    return <HorizCards />;
-  }, []);
+    return httpState.loading ? null : <HorizCards />;
+  }, [httpState.loading]);
 
   return (
     <div>
-      {error && <ErrorModal onClose={errorModalClose}>{error}</ErrorModal>}
-      <Layout />
-      <Navigation
-        category={category}
-        onSelectCategory={selectCategoryHandler}
-        onVisibleNav={visibleNavbar}
-      />
-      <Route
-        path="/"
-        exact
-        render={() => {
-          return isLoading ? null : slideshow;
-        }}
-      />
-      {Topnews}
-      <Route exact path="/" render={() => CardsComponent} />
-      <Route
-        path={history.pathname}
-        render={() => (history.pathname === "/" ? null : CardsComponent)}
-      />
+      {httpState.error && (
+        <ErrorModal onClose={errorModalClose}>{httpState.error}</ErrorModal>
+      )}
+      {slideshow}
+      {CardsComponent}
       {HorizontalCardsNews}
     </div>
   );

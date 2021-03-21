@@ -8,25 +8,32 @@ const HorizCards = () => {
   console.log(newsData);
 
   useEffect(() => {
+    let isMounted = true;
     axios
       .get(
-        "https://newsapi.org/v2/everything?q=apple&sortBy=popularity&apiKey=f6352cf470204beca0112cd570c29114"
+        "https://newsapi.org/v2/everything?q=bitcoin&sortBy=popularity&apiKey=f6352cf470204beca0112cd570c29114"
       )
-      .then((response) => setNewsData(response.data));
+      .then((response) => isMounted && setNewsData(response.data))
+      .catch((error) => console.log(error.message));
+
+    return () => (isMounted = false);
   }, []);
 
   const HorizontalCardNews = useMemo(() => {
     return (
       newsData &&
-      newsData.articles.map((result) => {
-        return <HorizCard imgLink={result.urlToImage} title={result.title} />;
+      newsData.articles.map((result, i) => {
+        return (
+          <HorizCard
+            key={i}
+            imgLink={result.urlToImage}
+            title={result.title}
+            toUrl={result.url}
+          />
+        );
       })
     );
   }, [newsData]);
-
-  //   const HorizontalCardNews = useMemo(() => {
-  //     return newsData ? <HorizCard /> : null;
-  //   }, [newsData]);
 
   return <div className={classes.Container}>{HorizontalCardNews}</div>;
 };

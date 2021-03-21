@@ -19,8 +19,7 @@ const navigation = React.memo((props) => {
           to="/"
           exact
           activeClassName={classes.Active}
-          onClick={onSelectCategory.bind(this, "")}
-        >
+          onClick={onSelectCategory.bind(this, "")}>
           All
         </NavLink>
       </li>
@@ -29,12 +28,10 @@ const navigation = React.memo((props) => {
           return (
             <li
               key={i}
-              onClick={onSelectCategory.bind(this, cat.toLowerCase())}
-            >
+              onClick={onSelectCategory.bind(this, cat.toLowerCase())}>
               <NavLink
                 to={`${cat.toLowerCase()}`}
-                activeClassName={classes.Active}
-              >
+                activeClassName={classes.Active}>
                 {cat}
               </NavLink>
             </li>

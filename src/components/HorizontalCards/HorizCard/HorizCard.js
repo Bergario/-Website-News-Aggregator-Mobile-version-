@@ -1,16 +1,16 @@
 import React from "react";
 import classes from "./HorizCard.module.css";
+import * as actions from "../../../Shared/Utility";
 
 const HorizCard = (props) => {
   console.log("Horiz");
-  console.log(props);
 
   return (
-    <div className={classes.HorizontalCard}>
-      <img src={props.imgLink} />
-      <div className={classes.Card_Content}>
-        <p>{props.title}</p>
-      </div>
+    <div
+      className={classes.HorizontalCard}
+      onClick={() => actions.openNewTabHandler(props.toUrl)}>
+      <img src={props.imgLink} alt="true" />
+      <div className={classes.Card_Content}>{props.title}</div>
     </div>
   );
 };

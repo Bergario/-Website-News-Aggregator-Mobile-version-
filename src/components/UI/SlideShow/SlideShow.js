@@ -6,6 +6,7 @@ import ImageSlide from "./ImageSlide";
 
 const Slideshow = () => {
   const [newsSlide, setNewsSlide] = useState(null);
+  console.log("slide");
 
   useEffect(() => {
     let isMounted = true;

@@ -1,16 +1,19 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import classes from "./App.module.css";
 import NewsAggregator from "./Container/NewsAggregator";
 import { Route, Switch, useHistory } from "react-router-dom";
 import NewsByCategory from "./Container/NewsByCategory";
 import Layout from "./components/Layout/Layout";
+import Content from "./components/Content/Content";
 
 function App() {
   const history = useHistory().location;
   console.log(history);
 
-  const Routes = useMemo(() => {
-    return (
+  // setPathname(history.pathname);
+
+  const Routes = useMemo(
+    () => (
       <Layout>
         <Switch>
           <Route path="/" component={NewsAggregator} exact />
@@ -21,10 +24,12 @@ function App() {
           <Route path="/science" component={NewsByCategory} />
           <Route path="/sports" component={NewsByCategory} />
           <Route path="/technology" component={NewsByCategory} />
+          <Route path="/article" component={Content} />
         </Switch>
       </Layout>
-    );
-  }, []);
+    ),
+    []
+  );
 
   return <div className={classes.App}>{Routes}</div>;
 }

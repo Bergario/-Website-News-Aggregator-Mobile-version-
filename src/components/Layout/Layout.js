@@ -4,7 +4,7 @@ import Navigation from "../Navigation/navigation";
 import classes from "./Layout.module.css";
 
 const Layout = React.memo((props) => {
-  console.log("LAYOUT RENDERED");
+  // console.log("LAYOUT RENDERED");
 
   const [scroll, setScroll] = useState("");
   const [visibleNavbar, setVisibleNavbar] = useState(true);
@@ -27,7 +27,7 @@ const Layout = React.memo((props) => {
     },
     [scroll]
   );
-  const selectCategoryHandler = (test) => {};
+  const selectCategoryHandler = useCallback((test) => {});
 
   useEffect(() => {
     window.addEventListener("scroll", navScrollHandler);

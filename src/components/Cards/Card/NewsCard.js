@@ -5,6 +5,7 @@ import { FaGlobeAmericas } from "react-icons/fa";
 
 const NewsCard = React.memo((props) => {
   console.log("CARD RENDERED");
+  console.log(props.data);
 
   return (
     <div className={classes.NewsCard}>
@@ -14,7 +15,7 @@ const NewsCard = React.memo((props) => {
       >
         <img src={props.imgLink} alt="true" />
       </div>
-      <span onClick={() => actions.openNewTabHandler(props.toUrl)}>
+      <span onClick={() => props.onClickArticleHandler(props.data)}>
         {props.title}
       </span>
       <hr />

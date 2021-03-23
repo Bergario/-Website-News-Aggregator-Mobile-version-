@@ -37,7 +37,6 @@ const NewsAggregator = () => {
 
   useEffect(() => {
     console.log("COMPONENT DID MOUNT");
-
     dispatchHttp({ type: "SEND" });
     axios
       .get(
@@ -52,6 +51,7 @@ const NewsAggregator = () => {
       });
   }, []);
 
+  //Modal Handler
   const errorModalClose = useCallback(() => {
     dispatchHttp({ type: "CLOSE" });
   }, []);

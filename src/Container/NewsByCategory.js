@@ -11,10 +11,10 @@ const NewsByCategory = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const history = useHistory().location;
+  const history = useHistory();
   console.log(history);
 
-  const cat = history.pathname.substring(1, 15);
+  const cat = history.location.pathname.substring(1, 15);
   console.log(cat);
 
   useEffect(() => {
@@ -38,6 +38,14 @@ const NewsByCategory = () => {
     setIsLoading(false);
   }, []);
 
+  //CLick Article Handler
+  const clickArticleHandler = useCallback((data) => {
+    history.push("/article", data);
+  });
+
+  //Result
+  // const ResultHandler =
+
   //Horizontal Card News
   const HorizontalCardsNews = useMemo(() => {
     return isLoading ? null : <HorizCards />;
@@ -48,7 +56,11 @@ const NewsByCategory = () => {
     return isLoading ? (
       <Spinner />
     ) : (
-      <NewsCards newsData={news} onCategorySelected={cat.toUpperCase()} />
+      <NewsCards
+        newsData={news}
+        onCategorySelected={cat.toUpperCase()}
+        onClickArticleHandler={clickArticleHandler}
+      />
     );
   }, [isLoading, news, cat]);
 

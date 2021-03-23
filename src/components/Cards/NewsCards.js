@@ -30,12 +30,14 @@ const NewsCards = (props) => {
           return (
             <NewsCard
               key={i}
+              data={result}
               title={result.title}
               imgLink={result.urlToImage}
               newsTimes={result.publishedAt}
               author={result.author}
               sources={result.source.name}
               toUrl={result.url}
+              onClickArticleHandler={props.onClickArticleHandler}
             />
           );
         })}
@@ -47,12 +49,14 @@ const NewsCards = (props) => {
             return (
               <NewsCard
                 key={i}
+                data={result}
                 title={result.title}
                 imgLink={result.urlToImage}
                 newsTimes={result.publishedAt}
                 author={result.author}
                 sources={result.source.name}
                 toUrl={result.url}
+                onClickArticleHandler={props.onClickArticleHandler}
               />
             );
           })}

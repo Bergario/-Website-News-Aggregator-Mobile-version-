@@ -5,7 +5,6 @@ import { FaGlobeAmericas } from "react-icons/fa";
 
 const NewsCard = React.memo((props) => {
   console.log("CARD RENDERED");
-  console.log(props.data);
 
   return (
     <div className={classes.NewsCard}>

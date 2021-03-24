@@ -40,7 +40,7 @@ const NewsAggregator = () => {
     dispatchHttp({ type: "SEND" });
     axios
       .get(
-        "https://newsapi.org/v2/top-headlines?country=id&apiKey=f6352cf470204beca0112cd570c29114"
+        "https://newsapi.org/v2/everything?q=bitcoin&apiKey=f6352cf470204beca0112cd570c29114"
       )
       .then((response) => {
         setNews(response.data);

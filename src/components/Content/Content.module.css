@@ -1,5 +1,42 @@
 @media (max-width: 480px) {
-  .Content img {
+  .Image img {
     width: 100%;
+  }
+
+  .Content h3 {
+    font-family: "Playfair Display", serif;
+    text-align: left;
+    font-size: 20px;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    padding: 0 10px;
+  }
+
+  .Description {
+    font-size: 12px;
+    text-align: left;
+    color: rgb(146 144 144);
+    padding: 0 10px;
+  }
+
+  .NewsDetail {
+    font-size: 10px;
+    text-align: left;
+    color: rgb(146 144 144);
+    padding: 10px 10px;
+    padding-bottom: 0;
+  }
+
+  .Article {
+    text-indent: 30px;
+    text-align: justify;
+    padding: 0 10px;
+  }
+
+  .Icon {
+    color: #607d8b;
+    text-align: left;
+    margin-left: 10px;
+    margin-top: 10px;
   }
 }

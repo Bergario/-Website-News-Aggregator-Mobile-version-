@@ -5,11 +5,14 @@ import ErrorModal from "../components/UI/Modal/ErrorModal";
 import Spinner from "../components/UI/Spinner/Spinner";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import ReactPaginate from "react-paginate";
+import classes from "../components/UI/pagination/Pagination.module.css";
 
 const NewsByCategory = () => {
   const [news, setNews] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [pageNumber, setPageNumber] = useState(0);
 
   const history = useHistory();
   console.log(history);
@@ -21,7 +24,7 @@ const NewsByCategory = () => {
     setIsLoading(true);
     axios
       .get(
-        `https://newsapi.org/v2/top-headlines?country=id&category=${cat}&apiKey=f6352cf470204beca0112cd570c29114`
+        `https://newsapi.org/v2/top-headlines?country=id&category=${cat}&page=${pageNumber}&apiKey=f6352cf470204beca0112cd570c29114`
       )
       .then((response) => {
         setNews(response.data);
@@ -30,7 +33,7 @@ const NewsByCategory = () => {
       .catch((error) => {
         setError(error.message);
       });
-  }, [cat]);
+  }, [cat, pageNumber]);
 
   //Modal Handler
   const errorModalClose = useCallback(() => {
@@ -62,17 +65,42 @@ const NewsByCategory = () => {
         onClickArticleHandler={clickArticleHandler}
       />
     );
-  }, [isLoading, news, cat]);
+  }, [isLoading, news, cat, clickArticleHandler]);
 
   //Error Modal
   const errorModal = useMemo(() => {
     return error && <ErrorModal onClose={errorModalClose}>{error}</ErrorModal>;
   }, [error, errorModalClose]);
 
+  //Page Handler
+  const PageClickHandler = useCallback(({ selected }) => {
+    setPageNumber(selected + 1);
+  }, []);
+
+  //Pagination Component
+  const Page = useMemo(() => {
+    return isLoading ? null : (
+      <ReactPaginate
+        previousLabel="previous"
+        nextLabel="next"
+        pageCount={"5"}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
+        onPageChange={PageClickHandler}
+        containerClassName={classes.Pagination}
+        previousLinkClassName={"PrevBtn"}
+        nextLinkClassName="NextBtn"
+        disabledClassName="paginationDisabled"
+        activeClassName={classes.Active}
+      />
+    );
+  });
+
   return (
     <>
       {errorModal}
       {CardsComponent}
+      {Page}
       {HorizontalCardsNews}
     </>
   );

@@ -1,4 +1,5 @@
 import React, { useCallback, useState, useEffect, useMemo } from "react";
+import Footer from "../Footer/Footer";
 import Navigation from "../Navigation/navigation";
 
 import classes from "./Layout.module.css";
@@ -47,6 +48,11 @@ const Layout = React.memo((props) => {
     );
   }, [category, visibleNavbar]);
 
+  //Footer Component
+  const footer = useMemo(() => {
+    return <Footer />;
+  }, [category]);
+
   return (
     <div>
       <div className={classes.Layout}>
@@ -54,6 +60,7 @@ const Layout = React.memo((props) => {
       </div>
       {NavComponent}
       <main>{props.children}</main>
+      {footer}
     </div>
   );
 });

@@ -12,7 +12,7 @@ const NewsByCategory = () => {
   const [news, setNews] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [pageNumber, setPageNumber] = useState(0);
+  const [pageNumber, setPageNumber] = useState(1);
 
   const history = useHistory();
   console.log(history);
@@ -74,7 +74,7 @@ const NewsByCategory = () => {
 
   //Page Handler
   const PageClickHandler = useCallback(({ selected }) => {
-    setPageNumber(selected + 1);
+    setPageNumber(selected);
   }, []);
 
   //Pagination Component
@@ -94,7 +94,7 @@ const NewsByCategory = () => {
         activeClassName={classes.Active}
       />
     );
-  });
+  }, [pageNumber, isLoading]);
 
   return (
     <>

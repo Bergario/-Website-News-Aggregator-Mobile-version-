@@ -11,11 +11,7 @@ const Content = (props) => {
   return (
     <div className={classes.Content}>
       <div className={classes.Icon}>
-        <FaArrowCircleLeft
-          size="30"
-          spin="true"
-          onClick={() => props.history.goBack()}
-        />
+        <FaArrowCircleLeft size="30" onClick={() => props.history.goBack()} />
       </div>
       <h3>{Data.title}</h3>
       <div className={classes.Image}>

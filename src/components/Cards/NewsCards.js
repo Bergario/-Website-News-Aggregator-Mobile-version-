@@ -16,36 +16,18 @@ const NewsCards = (props) => {
     setOpenCollapse(!openCollapse);
   }, [openCollapse]);
 
-  const newsDataSlice = newsData && newsData.articles.slice(0, 3);
+  let viewPerPage = onCategorySelected ? 20 : 3;
+
+  const newsDataSlice = newsData && newsData.articles.slice(0, viewPerPage);
   const newsDataCollapse = newsData && newsData.articles.slice(3, 10);
   console.log(newsDataSlice);
 
-  return (
-    <div className={classes.NewsCards}>
-      <h1>{onCategorySelected ? onCategorySelected : "HEADLINES"}</h1>
-      {newsData &&
-        newsDataSlice.map((result, i) => {
-          // console.log(result.length);
-
-          return (
-            <NewsCard
-              key={i}
-              data={result}
-              title={result.title}
-              imgLink={result.urlToImage}
-              newsTimes={result.publishedAt}
-              author={result.author}
-              sources={result.source.name}
-              toUrl={result.url}
-              onClickArticleHandler={props.onClickArticleHandler}
-            />
-          );
-        })}
+  //Collapse Component
+  const CollapseCards = onCategorySelected ? null : (
+    <>
       <Collapse isOpened={openCollapse}>
         {newsData &&
           newsDataCollapse.map((result, i) => {
-            // console.log(result.length);
-
             return (
               <NewsCard
                 key={i}
@@ -64,6 +46,29 @@ const NewsCards = (props) => {
       <Button clicked={openCollapseHandler} btnType="Success">
         {openCollapse ? "Show Less" : "Show More"}
       </Button>
+    </>
+  );
+
+  return (
+    <div className={classes.NewsCards}>
+      <h1>{onCategorySelected ? onCategorySelected : "HEADLINES"}</h1>
+      {newsData &&
+        newsDataSlice.map((result, i) => {
+          return (
+            <NewsCard
+              key={i}
+              data={result}
+              title={result.title}
+              imgLink={result.urlToImage}
+              newsTimes={result.publishedAt}
+              author={result.author}
+              sources={result.source.name}
+              toUrl={result.url}
+              onClickArticleHandler={props.onClickArticleHandler}
+            />
+          );
+        })}
+      {CollapseCards}
     </div>
   );
 };

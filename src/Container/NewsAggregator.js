@@ -47,7 +47,7 @@ const NewsAggregator = () => {
         dispatchHttp({ type: "RESPONSE" });
       })
       .catch((error) => {
-        dispatchHttp({ type: "SEND", errorMessage: "Something went wrong!" });
+        dispatchHttp({ type: "ERROR", errorMessage: "Something went wrong!" });
       });
   }, []);
 

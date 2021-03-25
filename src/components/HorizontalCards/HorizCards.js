@@ -5,40 +5,50 @@ import classes from "./HorizCards.module.css";
 
 const HorizCards = () => {
   const [newsData, setNewsData] = useState("");
-  const [newsSources, setNewsSources] = useState({
-    sources: "techcrunch",
-    name: "Techcrunch",
-  });
+  const [newsSources, setNewsSources] = useState("");
   console.log(newsData);
 
-  const randomNum = Math.floor(Math.random() * 10 + 1);
-  console.log(randomNum);
+  // let d = "";
 
-  let d = "";
-
-  if (randomNum <= 2) {
-    d = "enganget";
-  } else if (randomNum <= 4) {
-    d = "the-verge";
-  } else if (randomNum <= 6) {
-    d = "techcrunch";
-  } else if (randomNum <= 8) {
-    d = "cnn";
-  } else {
-    d = "bbc-news";
-  }
+  // if (randomNum <= 2) {
+  //   d = "engadget";
+  // } else if (randomNum <= 4) {
+  //   d = "the-verge";
+  // } else if (randomNum <= 6) {
+  //   d = "techcrunch";
+  // } else if (randomNum <= 8) {
+  //   d = "cnn";
+  // } else {
+  //   d = "bbc-news";
+  // }
 
   useEffect(() => {
+    const randomNum = Math.floor(Math.random() * 10 + 1);
+    let d = "";
+    if (randomNum <= 2) {
+      d = "engadget";
+    } else if (randomNum <= 4) {
+      d = "the-verge";
+    } else if (randomNum <= 6) {
+      d = "techcrunch";
+    } else if (randomNum <= 8) {
+      d = "cnn";
+    } else {
+      d = "bbc-news";
+    }
     let isMounted = true;
+    setNewsSources(d);
     axios
       .get(
-        `https://newsapi.org/v2/top-headlines?sources=${d}&apiKey=f6352cf470204beca0112cd570c29114`
+        `https://newsapi.org/v2/top-headlines?sources=${newsSources}&apiKey=f6352cf470204beca0112cd570c29114`
       )
       .then((response) => isMounted && setNewsData(response.data))
-      .catch((error) => console.log(error.message));
+      .catch((error) => {
+        console.log(error.message);
+      });
 
     return () => (isMounted = false);
-  }, []);
+  }, [newsSources]);
 
   const HorizontalCardNews = useMemo(() => {
     return (
@@ -58,7 +68,14 @@ const HorizCards = () => {
 
   return (
     <div>
-      <h3>{HorizontalCardNews ? `Recently from ${d.toUpperCase()}` : null}</h3>
+      <div className={classes.Title}>
+        {HorizontalCardNews && (
+          <p>
+            RECENTLY FROM
+            <span>{newsSources.toUpperCase()}</span>
+          </p>
+        )}
+      </div>
       <div className={classes.Container}>{HorizontalCardNews}</div>
     </div>
   );

@@ -3,6 +3,11 @@
 } */
 
 @media (max-width: 480px) {
+ .Title_background{
+    width: 100%;
+    background-color: whitesmoke;
+    height: 30px;
+  }
   .NewsCards h1 {
     /* font-size: 25px; */
     font-family: "Cormorant Unicase", serif;

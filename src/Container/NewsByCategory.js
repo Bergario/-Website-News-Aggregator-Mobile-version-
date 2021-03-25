@@ -44,7 +44,7 @@ const NewsByCategory = () => {
   //CLick Article Handler
   const clickArticleHandler = useCallback((data) => {
     history.push("/article", data);
-  });
+  }, []);
 
   //Result
   // const ResultHandler =
@@ -94,7 +94,7 @@ const NewsByCategory = () => {
         activeClassName={classes.Active}
       />
     );
-  }, [pageNumber, isLoading]);
+  }, [isLoading, PageClickHandler]);
 
   return (
     <>

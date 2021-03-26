@@ -20,11 +20,10 @@ const NewsCards = (props) => {
 
   const newsDataSlice = newsData && newsData.articles.slice(0, viewPerPage);
   const newsDataCollapse = newsData && newsData.articles.slice(3, 10);
-  console.log(newsDataSlice);
 
   //Collapse Component
   const CollapseCards = onCategorySelected ? null : (
-    <>
+    <h1>
       <Collapse isOpened={openCollapse}>
         {newsData &&
           newsDataCollapse.map((result, i) => {
@@ -46,13 +45,13 @@ const NewsCards = (props) => {
       <Button clicked={openCollapseHandler} btnType="Success">
         {openCollapse ? "Show Less" : "Show More"}
       </Button>
-    </>
+    </h1>
   );
 
   return (
     <div className={classes.NewsCards}>
       <div className={classes.Title_background}>
-        <h1>{onCategorySelected ? onCategorySelected : "HEADLINES"}</h1>
+        {onCategorySelected ? onCategorySelected : "HEADLINES"}
       </div>
       {newsData &&
         newsDataSlice.map((result, i) => {

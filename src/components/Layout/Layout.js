@@ -28,7 +28,6 @@ const Layout = React.memo((props) => {
     },
     [scroll]
   );
-  const selectCategoryHandler = useCallback((test) => {});
 
   useEffect(() => {
     window.addEventListener("scroll", navScrollHandler);
@@ -39,24 +38,18 @@ const Layout = React.memo((props) => {
 
   //Nav Component
   const NavComponent = useMemo(() => {
-    return (
-      <Navigation
-        category={category}
-        onSelectCategory={selectCategoryHandler}
-        onVisibleNav={visibleNavbar}
-      />
-    );
+    return <Navigation category={category} onVisibleNav={visibleNavbar} />;
   }, [category, visibleNavbar]);
 
   //Footer Component
   const footer = useMemo(() => {
-    return <Footer />;
+    return props.newsData && <Footer />;
   }, [category]);
 
   return (
     <div>
       <div className={classes.Layout}>
-        WhiteBoard<span>NEWS</span>
+        WhiteBoard<span>news</span>
       </div>
       {NavComponent}
       <main>{props.children}</main>

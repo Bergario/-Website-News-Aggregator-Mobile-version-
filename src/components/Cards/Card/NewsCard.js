@@ -10,7 +10,7 @@ const NewsCard = React.memo((props) => {
     <div className={classes.NewsCard}>
       <div
         className={classes.ImgCard}
-        onClick={() => actions.openNewTabHandler(props.toUrl)}
+        onClick={() => props.onClickArticleHandler(props.data)}
       >
         <img src={props.imgLink} alt="true" />
       </div>
@@ -24,7 +24,7 @@ const NewsCard = React.memo((props) => {
       </p>
       <li
         className={classes.Link}
-        onClick={() => actions.openNewTabHandler(props.toUrl)}
+        onClick={() => props.onClickArticleHandler(props.data)}
       >
         <span>read more {">"}</span>
       </li>

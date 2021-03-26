@@ -2,16 +2,16 @@
   .Layout {
     width: 100%;
     height: 45px;
-    background-image: linear-gradient(#181717, #414141);
+    background-image: linear-gradient(#e6dee4, #e8f0f5);
     position: fixed;
     z-index: 1000;
     top: 0;
     font-size: 30px;
     padding: 0;
     font-weight: 700;
-    color: rgb(236 236 236);
+    color: rgb(109 107 107);
     font-family: "Berkshire Swash", cursive;
-    box-shadow: 0px 3px 5px #676565;
+    box-shadow: 0px 3px 5px #cad0cc;
     line-height: 150%;
   }
 
@@ -19,7 +19,7 @@
     font-size: 15px;
     padding: 0;
     margin: 0px auto;
-    font-family: "Cormorant Unicase", serif;
+    font-family: "Berkshire Swash", cursive;
     font-weight: bold;
     /* text-shadow: 3px -3px 4px rgb(226, 227, 228) */
   }

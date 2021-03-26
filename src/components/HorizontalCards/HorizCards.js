@@ -2,25 +2,15 @@ import React, { useEffect, useState, useMemo, useCallback } from "react";
 import HorizCard from "./HorizCard/HorizCard";
 import axios from "axios";
 import classes from "./HorizCards.module.css";
+import { FaCaretRight } from "react-icons/fa";
+import { useHistory } from "react-router-dom";
 
-const HorizCards = () => {
+const HorizCards = React.memo(() => {
   const [newsData, setNewsData] = useState("");
   const [newsSources, setNewsSources] = useState("");
-  console.log(newsData);
+  console.log("HCards");
 
-  // let d = "";
-
-  // if (randomNum <= 2) {
-  //   d = "engadget";
-  // } else if (randomNum <= 4) {
-  //   d = "the-verge";
-  // } else if (randomNum <= 6) {
-  //   d = "techcrunch";
-  // } else if (randomNum <= 8) {
-  //   d = "cnn";
-  // } else {
-  //   d = "bbc-news";
-  // }
+  const history = useHistory();
 
   useEffect(() => {
     const randomNum = Math.floor(Math.random() * 10 + 1);
@@ -40,7 +30,7 @@ const HorizCards = () => {
     setNewsSources(d);
     axios
       .get(
-        `https://newsapi.org/v2/top-headlines?sources=${newsSources}&apiKey=f6352cf470204beca0112cd570c29114`
+        `https://newsapi.org/v2/top-headlines?sources=${newsSources}&apiKey=431f7d44704c47a698fc804cdfa23881`
       )
       .then((response) => isMounted && setNewsData(response.data))
       .catch((error) => {
@@ -50,6 +40,11 @@ const HorizCards = () => {
     return () => (isMounted = false);
   }, [newsSources]);
 
+  //CLick Article Handler
+  const clickArticleHandler = useCallback((data) => {
+    history.push("/article", data);
+  }, []);
+
   const HorizontalCardNews = useMemo(() => {
     return (
       newsData &&
@@ -57,9 +52,11 @@ const HorizCards = () => {
         return (
           <HorizCard
             key={i}
+            data={result}
             imgLink={result.urlToImage}
             title={result.title}
             toUrl={result.url}
+            onClickArticleHandler={clickArticleHandler}
           />
         );
       })
@@ -71,14 +68,15 @@ const HorizCards = () => {
       <div className={classes.Title}>
         {HorizontalCardNews && (
           <p>
-            RECENTLY FROM
-            <span>{newsSources.toUpperCase()}</span>
+            LATEST FROM
+            <FaCaretRight size="15" />
+            <span> {newsSources}</span>
           </p>
         )}
       </div>
       <div className={classes.Container}>{HorizontalCardNews}</div>
     </div>
   );
-};
+});
 
 export default HorizCards;

@@ -3,6 +3,7 @@ import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import axios from "axios";
 import ImageSlide from "./ImageSlide";
+import classes from "./ImageSlide.module.css";
 
 const Slideshow = () => {
   const [newsSlide, setNewsSlide] = useState(null);
@@ -12,7 +13,7 @@ const Slideshow = () => {
     let isMounted = true;
     axios
       .get(
-        "https://newsapi.org/v2/everything?q=technology&apiKey=f6352cf470204beca0112cd570c29114"
+        "https://newsapi.org/v2/top-headlines?country=id&category=technology&apiKey=431f7d44704c47a698fc804cdfa23881"
       )
       .then((response) => {
         isMounted && setNewsSlide(response.data);
@@ -29,14 +30,21 @@ const Slideshow = () => {
     return (
       newsSlide &&
       newsSlide.articles.map((result, i) => (
-        <ImageSlide title={result.title} imgLink={result.urlToImage} key={i} />
+        <ImageSlide
+          title={result.title}
+          imgLink={result.urlToImage}
+          key={i}
+          toUrl={result.url}
+        />
       ))
     );
   }, [newsSlide]);
 
   const Posts = newsSlide ? (
     <div>
-      <h3>LATEST TECH</h3>
+      <div className={classes.Title_Background}>
+        <p>Top tech headlines</p>
+      </div>
       <div className="slide-container">
         <Slide>{slidePost ? slidePost : <ImageSlide />}</Slide>
       </div>

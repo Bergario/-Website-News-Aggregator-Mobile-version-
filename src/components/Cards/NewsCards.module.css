@@ -3,14 +3,15 @@
 } */
 
 @media (max-width: 480px) {
- .Title_background{
+  .Title_background {
     width: 100%;
-    background-color: whitesmoke;
-    height: 30px;
+    background-color: #607d8b;
+    height: 40px;
+    box-shadow: 0px 6px 8px #888787;
   }
   .NewsCards h1 {
     /* font-size: 25px; */
     font-family: "Cormorant Unicase", serif;
-    text-shadow: 0px 5px 5px #a9a6a6;
+    /* text-shadow: 0px 5px 5px #a9a6a6; */
   }
 }

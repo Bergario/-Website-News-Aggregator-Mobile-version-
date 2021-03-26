@@ -15,23 +15,18 @@ const navigation = React.memo((props) => {
   return (
     <div className={attachedClass.join(" ")}>
       <li>
-        <NavLink
-          to="/"
-          exact
-          activeClassName={classes.Active}
-          onClick={onSelectCategory.bind(this, "")}>
+        <NavLink to="/" exact activeClassName={classes.Active}>
           All
         </NavLink>
       </li>
       {category &&
         category.map((cat, i) => {
           return (
-            <li
-              key={i}
-              onClick={onSelectCategory.bind(this, cat.toLowerCase())}>
+            <li key={i}>
               <NavLink
                 to={`${cat.toLowerCase()}`}
-                activeClassName={classes.Active}>
+                activeClassName={classes.Active}
+              >
                 {cat}
               </NavLink>
             </li>

@@ -6,12 +6,13 @@ import React, {
   useReducer,
 } from "react";
 import NewsCards from "../components/Cards/NewsCards";
-import TopNews from "../components/TopNews/TopNews";
 import axios from "axios";
 import Spinner from "../components/UI/Spinner/Spinner";
 import ErrorModal from "../components/UI/Modal/ErrorModal";
 import Slideshow from "../components/UI/SlideShow/SlideShow";
 import HorizCards from "../components/HorizontalCards/HorizCards";
+import { useHistory } from "react-router-dom";
+import Layout from "../components/Layout/Layout";
 
 const httpReducer = (curHttpState, action) => {
   switch (action.type) {
@@ -35,12 +36,14 @@ const NewsAggregator = () => {
     error: null,
   });
 
+  const history = useHistory();
+
   useEffect(() => {
     console.log("COMPONENT DID MOUNT");
     dispatchHttp({ type: "SEND" });
     axios
       .get(
-        "https://newsapi.org/v2/everything?q=bitcoin&apiKey=f6352cf470204beca0112cd570c29114"
+        "https://newsapi.org/v2/top-headlines?country=id&apiKey=431f7d44704c47a698fc804cdfa23881"
       )
       .then((response) => {
         setNews(response.data);
@@ -56,14 +59,18 @@ const NewsAggregator = () => {
     dispatchHttp({ type: "CLOSE" });
   }, []);
 
+  //CLick Article Handler
+  const clickArticleHandler = useCallback((data) => {
+    history.push("/article", data);
+  }, []);
+
   //Card News Component
   const CardsComponent = useMemo(() => {
-    return httpState.loading ? <Spinner /> : <NewsCards newsData={news} />;
-  }, [httpState.loading, news]);
-
-  //TopNews Component
-  const Topnews = useMemo(() => {
-    return httpState.loading ? null : <TopNews newsData={news} />;
+    return httpState.loading ? (
+      <Spinner />
+    ) : (
+      <NewsCards newsData={news} onClickArticleHandler={clickArticleHandler} />
+    );
   }, [httpState.loading, news]);
 
   //SlideShow Component
@@ -77,14 +84,16 @@ const NewsAggregator = () => {
   }, [httpState.loading]);
 
   return (
-    <div>
-      {httpState.error && (
-        <ErrorModal onClose={errorModalClose}>{httpState.error}</ErrorModal>
-      )}
-      {slideshow}
-      {CardsComponent}
-      {HorizontalCardsNews}
-    </div>
+    <Layout newsData={news}>
+      <div>
+        {httpState.error && (
+          <ErrorModal onClose={errorModalClose}>{httpState.error}</ErrorModal>
+        )}
+        {slideshow}
+        {CardsComponent}
+        {HorizontalCardsNews}
+      </div>
+    </Layout>
   );
 };
 

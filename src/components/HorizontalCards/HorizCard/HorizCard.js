@@ -1,6 +1,5 @@
 import React from "react";
 import classes from "./HorizCard.module.css";
-import * as actions from "../../../Shared/Utility";
 
 const HorizCard = (props) => {
   console.log("Horiz");
@@ -8,7 +7,8 @@ const HorizCard = (props) => {
   return (
     <div
       className={classes.HorizontalCard}
-      onClick={() => actions.openNewTabHandler(props.toUrl)}>
+      onClick={() => props.onClickArticleHandler(props.data)}
+    >
       <img src={props.imgLink} alt="true" />
       <div className={classes.Card_Content}>{props.title}</div>
     </div>

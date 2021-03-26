@@ -3,20 +3,31 @@
     overflow: auto;
     display: flex;
   }
-  .Title{
+  .Title {
     width: 100%;
     background-color: whitesmoke;
     height: 30px;
     margin-top: 20px;
   }
 
-  .Title p{
-    font-size: 14px;
+  .Title p {
+    font-size: 12px;
     margin-bottom: 0;
-    font-family: "Playfair Display', serif";
-    height: 15px;
-    display: contents;
     text-shadow: 0px 5px 5px #a9a6a6;
     font-weight: 600;
+    color: #676262;
+    text-transform: uppercase;
+    line-height: 30px;
+    text-align: left;
+    margin-left: 20px;
+  }
+
+  .Title p span {
+    color: brown;
+    font-size: 15px;
+  }
+
+  .Title svg {
+    vertical-align: text-top;
   }
 }

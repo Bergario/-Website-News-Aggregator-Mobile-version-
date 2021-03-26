@@ -7,6 +7,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import classes from "../components/UI/pagination/Pagination.module.css";
+import Layout from "../components/Layout/Layout";
 
 const NewsByCategory = () => {
   const [news, setNews] = useState("");
@@ -15,7 +16,6 @@ const NewsByCategory = () => {
   const [pageNumber, setPageNumber] = useState(1);
 
   const history = useHistory();
-  console.log(history);
 
   const cat = history.location.pathname.substring(1, 15);
   console.log(cat);
@@ -24,7 +24,7 @@ const NewsByCategory = () => {
     setIsLoading(true);
     axios
       .get(
-        `https://newsapi.org/v2/top-headlines?country=id&category=${cat}&page=${pageNumber}&apiKey=f6352cf470204beca0112cd570c29114`
+        `https://newsapi.org/v2/top-headlines?country=id&category=${cat}&page=${pageNumber}&apiKey=431f7d44704c47a698fc804cdfa23881`
       )
       .then((response) => {
         setNews(response.data);
@@ -97,12 +97,12 @@ const NewsByCategory = () => {
   }, [isLoading, PageClickHandler]);
 
   return (
-    <>
+    <Layout newsData={news}>
       {errorModal}
       {CardsComponent}
       {Page}
       {HorizontalCardsNews}
-    </>
+    </Layout>
   );
 };
 

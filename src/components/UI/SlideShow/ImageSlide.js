@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./ImageSlide.module.css";
+import * as actions from "../../../Shared/Utility";
 
 const ImageSlide = (props) => {
   return (
@@ -10,7 +11,10 @@ const ImageSlide = (props) => {
           height: "250px",
         }}
       ></div>
-      <div className={classes.NewsTitle}>
+      <div
+        className={classes.NewsTitle}
+        onClick={() => actions.openNewTabHandler(props.toUrl)}
+      >
         <h5>TECH</h5>
         <p>{props.title}</p>
       </div>

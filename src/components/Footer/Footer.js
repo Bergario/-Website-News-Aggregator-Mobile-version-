@@ -7,9 +7,9 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 
-const Footer = () => {
+const Footer = (props) => {
   console.log("Footer");
-
+  console.log(props.loading);
   return (
     <div className={classes.Footer}>
       <h2>WhiteBoardnews</h2>

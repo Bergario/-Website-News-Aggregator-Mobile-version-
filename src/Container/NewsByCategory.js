@@ -7,6 +7,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import classes from "../components/UI/pagination/Pagination.module.css";
+import "../components/UI/pagination/Pagination.module.css";
 import Layout from "../components/Layout/Layout";
 
 const NewsByCategory = () => {
@@ -21,24 +22,28 @@ const NewsByCategory = () => {
   console.log(cat);
 
   useEffect(() => {
+    let isMounted = true;
     setIsLoading(true);
     axios
       .get(
-        `https://newsapi.org/v2/top-headlines?country=id&category=${cat}&page=${pageNumber}&apiKey=431f7d44704c47a698fc804cdfa23881`
+        `https://newsapi.org/v2/top-headlines?country=id&category=${cat}&page=${pageNumber}&apiKey=e4c48ca5b6b743248ed9a5e9ab69174c`
       )
       .then((response) => {
-        setNews(response.data);
+        isMounted && setNews(response.data);
         setIsLoading(false);
       })
       .catch((error) => {
         setError(error.message);
       });
+    return () => {
+      isMounted = false;
+    };
   }, [cat, pageNumber]);
 
   //Modal Handler
   const errorModalClose = useCallback(() => {
     setError(null);
-    setIsLoading(false);
+    setIsLoading(true);
   }, []);
 
   //CLick Article Handler
@@ -74,7 +79,7 @@ const NewsByCategory = () => {
 
   //Page Handler
   const PageClickHandler = useCallback(({ selected }) => {
-    setPageNumber(selected);
+    setPageNumber(selected + 1);
   }, []);
 
   //Pagination Component
@@ -83,21 +88,21 @@ const NewsByCategory = () => {
       <ReactPaginate
         previousLabel="previous"
         nextLabel="next"
-        pageCount={"5"}
+        pageCount={"3"}
         marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
+        pageRangeDisplayed={3}
         onPageChange={PageClickHandler}
         containerClassName={classes.Pagination}
         previousLinkClassName={"PrevBtn"}
         nextLinkClassName="NextBtn"
         disabledClassName="paginationDisabled"
-        activeClassName={classes.Active}
+        // activeClassName={classes.Active}
       />
     );
-  }, [isLoading, PageClickHandler]);
+  }, [isLoading, PageClickHandler, pageNumber]);
 
   return (
-    <Layout newsData={news}>
+    <Layout newsData={news} loading={isLoading}>
       {errorModal}
       {CardsComponent}
       {Page}

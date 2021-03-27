@@ -5,7 +5,6 @@ import classes from "./ErrorModal.module.css";
 
 const ErrorModal = React.memo((props) => {
   console.log("RENDERING ERROR MODAL");
-  console.log(props);
 
   return (
     <React.Fragment>

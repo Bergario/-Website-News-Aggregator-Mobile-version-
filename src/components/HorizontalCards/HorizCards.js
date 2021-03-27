@@ -30,12 +30,10 @@ const HorizCards = React.memo(() => {
     setNewsSources(d);
     axios
       .get(
-        `https://newsapi.org/v2/top-headlines?sources=${newsSources}&apiKey=431f7d44704c47a698fc804cdfa23881`
+        `https://newsapi.org/v2/top-headlines?sources=${newsSources}&apiKey=e4c48ca5b6b743248ed9a5e9ab69174c`
       )
       .then((response) => isMounted && setNewsData(response.data))
-      .catch((error) => {
-        console.log(error.message);
-      });
+      .catch((error) => {});
 
     return () => (isMounted = false);
   }, [newsSources]);

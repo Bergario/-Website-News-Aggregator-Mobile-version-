@@ -6,7 +6,7 @@ import classes from "./navigation.module.css";
 
 const navigation = React.memo((props) => {
   console.log("NAV RENDERED");
-  const { category, onSelectCategory, onVisibleNav } = props;
+  const { category, onVisibleNav } = props;
   let attachedClass = [classes.Navigation, classes.Visible];
   if (!onVisibleNav) {
     attachedClass = [classes.Navigation, classes.Invisible];
@@ -16,7 +16,7 @@ const navigation = React.memo((props) => {
     <div className={attachedClass.join(" ")}>
       <li>
         <NavLink to="/" exact activeClassName={classes.Active}>
-          All
+          News
         </NavLink>
       </li>
       {category &&
@@ -25,8 +25,7 @@ const navigation = React.memo((props) => {
             <li key={i}>
               <NavLink
                 to={`${cat.toLowerCase()}`}
-                activeClassName={classes.Active}
-              >
+                activeClassName={classes.Active}>
                 {cat}
               </NavLink>
             </li>

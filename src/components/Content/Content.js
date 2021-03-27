@@ -10,7 +10,7 @@ const Content = (props) => {
   const Data = props.location.state;
 
   return (
-    <Layout>
+    <Layout newsData={Data}>
       <div className={classes.Content}>
         <div className={classes.Icon}>
           <FaArrowCircleLeft size="30" onClick={() => props.history.goBack()} />
@@ -29,8 +29,7 @@ const Content = (props) => {
         </div>
         <Button
           btnType="Success"
-          clicked={() => actions.openNewTabHandler(Data.url)}
-        >
+          clicked={() => actions.openNewTabHandler(Data.url)}>
           Read more in original sources
         </Button>
       </div>

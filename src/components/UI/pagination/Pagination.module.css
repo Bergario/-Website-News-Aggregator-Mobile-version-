@@ -17,8 +17,7 @@
     font-weight: 600;
   }
 
-  .Pagination a:active,
-  .Pagination .Active a {
+  li.selected:active {
     border: 1px solid #607d8b;
   }
 }

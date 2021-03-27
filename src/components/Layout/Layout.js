@@ -42,9 +42,13 @@ const Layout = React.memo((props) => {
   }, [category, visibleNavbar]);
 
   //Footer Component
-  const footer = useMemo(() => {
-    return props.newsData && <Footer />;
-  }, [category]);
+  let footer = useMemo(() => {
+    return props.newsData && <Footer loading={props.loading} />;
+  }, [props.newsData, props.loading]);
+
+  footer = useMemo(() => {
+    return props.loading ? null : <Footer />;
+  }, [props.loading]);
 
   return (
     <div>

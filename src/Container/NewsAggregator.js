@@ -85,7 +85,7 @@ const NewsAggregator = () => {
   }, [httpState.loading]);
 
   return (
-    <Layout newsData={news}>
+    <Layout newsData={news} loading={httpState.loading}>
       <div>
         {httpState.error && (
           <ErrorModal onClose={errorModalClose}>{httpState.error}</ErrorModal>

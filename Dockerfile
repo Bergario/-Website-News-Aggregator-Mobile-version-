@@ -6,4 +6,4 @@ RUN npm ci --only=prod
 COPY . .
 RUN npm run build
 EXPOSE 3000
-CMD ["npm, "start"]
+CMD ["npm", "start"]

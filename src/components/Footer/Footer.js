@@ -17,7 +17,7 @@ const Footer = () => {
       <FaFacebook size="25" className={classes.Icon} />
       <FaTwitter size="25" className={classes.Icon} />
       <FaLinkedinIn size="25" className={classes.Icon} />
-      <p>Copyright @2021 WhiteBoardnews</p>
+      <p>Copyright @2021-2023 WhiteBoardnews</p>
     </div>
   );
 };

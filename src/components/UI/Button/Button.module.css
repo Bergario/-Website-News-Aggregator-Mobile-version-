@@ -1,24 +1,26 @@
 .Button {
-    background-color: transparent;
-    border: 1px solid #dddd;
-    color: white;
-    outline: black;
-    cursor: pointer;
-    font: inherit;
-    padding: 5px 20px;
-    margin: 10px;
-    font-weight: bold;
+  background-color: transparent;
+  border: 1px solid #dddd;
+  color: white;
+  outline: black;
+  cursor: pointer;
+  font: inherit;
+  padding: 5px 20px;
+  margin: 10px;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 12px;
 }
 
 .Button:first-of-type {
-    /* margin-left: 0;
+  /* margin-left: 0;
     padding-left: 0; */
 }
 
 .Success {
-    color: #607d8b;
+  color: #607d8b;
 }
 
 .Danger {
-    color: #944317;
+  color: #944317;
 }

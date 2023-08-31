@@ -14,20 +14,20 @@ const HorizCards = React.memo(() => {
 
   useEffect(() => {
     const randomNum = Math.floor(Math.random() * 10 + 1);
-    let d = "";
+    let newsCompany = "";
     if (randomNum <= 2) {
-      d = "engadget";
+      newsCompany = "engadget";
     } else if (randomNum <= 4) {
-      d = "the-verge";
+      newsCompany = "the-verge";
     } else if (randomNum <= 6) {
-      d = "techcrunch";
+      newsCompany = "techcrunch";
     } else if (randomNum <= 8) {
-      d = "cnn";
+      newsCompany = "cnn";
     } else {
-      d = "bbc-news";
+      newsCompany = "bbc-news";
     }
     let isMounted = true;
-    setNewsSources(d);
+    setNewsSources(newsCompany);
     axios
       .get(
         `https://newsapi.org/v2/top-headlines?sources=${newsSources}&apiKey=431f7d44704c47a698fc804cdfa23881`

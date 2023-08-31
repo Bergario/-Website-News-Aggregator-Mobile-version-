@@ -4,15 +4,17 @@ import * as actions from "../../../Shared/Utility";
 import { FaGlobeAmericas } from "react-icons/fa";
 
 const NewsCard = React.memo((props) => {
-  console.log("CARD RENDERED");
-
   return (
     <div className={classes.NewsCard}>
       <div
         className={classes.ImgCard}
         onClick={() => props.onClickArticleHandler(props.data)}
       >
-        <img src={props.imgLink} alt="true" />
+        {props.imgLink ? (
+          <img src={props.imgLink} alt="true" />
+        ) : (
+          <img src="/no-image.png" alt="true" />
+        )}
       </div>
       <span onClick={() => props.onClickArticleHandler(props.data)}>
         {props.title}

@@ -13,7 +13,7 @@ const Slideshow = () => {
     let isMounted = true;
     axios
       .get(
-        "https://newsapi.org/v2/top-headlines?country=id&category=technology&apiKey=431f7d44704c47a698fc804cdfa23881"
+        "https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=431f7d44704c47a698fc804cdfa23881"
       )
       .then((response) => {
         isMounted && setNewsSlide(response.data);

@@ -7,7 +7,6 @@ import NewsCard from "./Card/NewsCard";
 import classes from "./NewsCards.module.css";
 
 const NewsCards = (props) => {
-  console.log("CARDS");
   const { newsData, onCategorySelected } = props;
 
   const [openCollapse, setOpenCollapse] = useState(false);
@@ -23,7 +22,7 @@ const NewsCards = (props) => {
 
   //Collapse Component
   const CollapseCards = onCategorySelected ? null : (
-    <h1>
+    <>
       <Collapse isOpened={openCollapse}>
         {newsData &&
           newsDataCollapse.map((result, i) => {
@@ -45,7 +44,7 @@ const NewsCards = (props) => {
       <Button clicked={openCollapseHandler} btnType="Success">
         {openCollapse ? "Show Less" : "Show More"}
       </Button>
-    </h1>
+    </>
   );
 
   return (

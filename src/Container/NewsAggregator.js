@@ -43,7 +43,7 @@ const NewsAggregator = () => {
     dispatchHttp({ type: "SEND" });
     axios
       .get(
-        "https://newsapi.org/v2/top-headlines?country=id&apiKey=431f7d44704c47a698fc804cdfa23881"
+        "https://newsapi.org/v2/top-headlines?country=us&apiKey=431f7d44704c47a698fc804cdfa23881"
       )
       .then((response) => {
         setNews(response.data);
@@ -85,7 +85,7 @@ const NewsAggregator = () => {
 
   return (
     <Layout newsData={news}>
-      <div>
+      <div >
         {httpState.error && (
           <ErrorModal onClose={errorModalClose}>{httpState.error}</ErrorModal>
         )}

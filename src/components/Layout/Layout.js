@@ -52,8 +52,8 @@ const Layout = React.memo((props) => {
         WhiteBoard<span>news</span>
       </div>
       {NavComponent}
-      <main>{props.children}</main>
-      {footer}
+      <main style={{ minHeight: "700px" }}>{props.children}</main>
+      <Footer />
     </div>
   );
 });

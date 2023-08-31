@@ -24,9 +24,10 @@ const NewsByCategory = () => {
     setIsLoading(true);
     axios
       .get(
-        `https://newsapi.org/v2/top-headlines?country=id&category=${cat}&page=${pageNumber}&apiKey=431f7d44704c47a698fc804cdfa23881`
+        `https://newsapi.org/v2/top-headlines?country=us&category=${cat}&page=${pageNumber}&apiKey=431f7d44704c47a698fc804cdfa23881`
       )
       .then((response) => {
+        console.log(response);
         setNews(response.data);
         setIsLoading(false);
       })

@@ -1,14 +1,10 @@
 name: Build and Push Docker Image Docker Hub
-
 on:
   push:
     branches: [ "master" ]
-
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout the repo
       uses: actions/checkout@v3

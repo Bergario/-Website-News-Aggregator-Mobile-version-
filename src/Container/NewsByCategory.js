@@ -26,18 +26,10 @@ const NewsByCategory = () => {
     setIsLoading(true);
     axios
       .get(
-<<<<<<< HEAD
-        `https://newsapi.org/v2/top-headlines?country=us&category=${cat}&page=${pageNumber}&apiKey=431f7d44704c47a698fc804cdfa23881`
-      )
-      .then((response) => {
-        console.log(response);
-        setNews(response.data);
-=======
         `https://newsapi.org/v2/top-headlines?country=id&category=${cat}&page=${pageNumber}&apiKey=e4c48ca5b6b743248ed9a5e9ab69174c`
       )
       .then((response) => {
         isMounted && setNews(response.data);
->>>>>>> e5d99c0126e4a9fcb20b04d129b9c9991f4fd24b
         setIsLoading(false);
       })
       .catch((error) => {

@@ -21,9 +21,9 @@ const httpReducer = (curHttpState, action) => {
     case "RESPONSE":
       return { ...curHttpState, loading: false };
     case "ERROR":
-      return { loading: false, error: action.errorMessage };
+      return { loading: true, error: action.errorMessage };
     case "CLOSE":
-      return { loading: false, error: null };
+      return { loading: true, error: null };
     default:
       throw new Error("Should not be reached!");
   }
@@ -43,7 +43,11 @@ const NewsAggregator = () => {
     dispatchHttp({ type: "SEND" });
     axios
       .get(
+<<<<<<< HEAD
         "https://newsapi.org/v2/top-headlines?country=us&apiKey=431f7d44704c47a698fc804cdfa23881"
+=======
+        "https://newsapi.org/v2/top-headlines?country=id&apiKey=e4c48ca5b6b743248ed9a5e9ab69174c"
+>>>>>>> e5d99c0126e4a9fcb20b04d129b9c9991f4fd24b
       )
       .then((response) => {
         setNews(response.data);
@@ -60,23 +64,24 @@ const NewsAggregator = () => {
   }, []);
 
   //CLick Article Handler
-  const clickArticleHandler = useCallback((data) => {
-    history.push("/article", data);
-  }, []);
+  const clickArticleHandler = useCallback(
+    (data) => {
+      history.push("/article", data);
+    },
+    [history]
+  );
 
   //Card News Component
   const CardsComponent = useMemo(() => {
-    return httpState.loading ? (
-      <Spinner />
-    ) : (
+    return httpState.loading ? null : (
       <NewsCards newsData={news} onClickArticleHandler={clickArticleHandler} />
     );
   }, [httpState.loading, news]);
 
   //SlideShow Component
   const slideshow = useMemo(() => {
-    return <Slideshow />;
-  }, []);
+    return httpState.loading ? <Spinner /> : <Slideshow />;
+  }, [httpState.loading]);
 
   // Horizontal Card News Component
   const HorizontalCardsNews = useMemo(() => {
@@ -84,8 +89,13 @@ const NewsAggregator = () => {
   }, [httpState.loading]);
 
   return (
+<<<<<<< HEAD
     <Layout newsData={news}>
       <div >
+=======
+    <Layout newsData={news} loading={httpState.loading}>
+      <div>
+>>>>>>> e5d99c0126e4a9fcb20b04d129b9c9991f4fd24b
         {httpState.error && (
           <ErrorModal onClose={errorModalClose}>{httpState.error}</ErrorModal>
         )}

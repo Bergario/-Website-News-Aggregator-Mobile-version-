@@ -1,15 +1,11 @@
 import React, { useMemo } from "react";
 import classes from "./App.module.css";
 import NewsAggregator from "./Container/NewsAggregator";
-import { Route, Switch, useHistory, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import NewsByCategory from "./Container/NewsByCategory";
-import Layout from "./components/Layout/Layout";
 import Content from "./components/Content/Content";
 
 function App() {
-  const history = useHistory().location;
-  console.log(history);
-
   // setPathname(history.pathname);
 
   const Routes = useMemo(

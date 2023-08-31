@@ -50,7 +50,7 @@ const NewsCards = (props) => {
   return (
     <div className={classes.NewsCards}>
       <div className={classes.Title_background}>
-        {onCategorySelected ? onCategorySelected : "HEADLINES"}
+        <h1>{onCategorySelected ? onCategorySelected : "HEADLINES"}</h1>
       </div>
       {newsData &&
         newsDataSlice.map((result, i) => {
